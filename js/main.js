@@ -83,19 +83,4 @@ form?.addEventListener('submit', e => {
   }, 800);
 });
 
-/* ===== ARTICLES FILTER ===== */
-const filterBtns   = document.querySelectorAll('.filter-btn');
-const articleCards = document.querySelectorAll('.article-card');
-
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const tag = btn.dataset.filter;
-
-    articleCards.forEach(card => {
-      const match = tag === 'all' || card.dataset.category === tag;
-      card.style.display = match ? '' : 'none';
-    });
-  });
-});
+/* Articles filter + pagination are handled inline in articles.html */

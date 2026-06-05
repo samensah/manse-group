@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XYK1B6R14M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XYK1B6R14M');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Insights — Manse Advisory & Analytics</title>
@@ -210,6 +218,13 @@
       </article>
 
     </div>
+
+    <!-- Pagination -->
+    <div class="pagination-bar" id="paginationBar" aria-label="Article pagination">
+      <p class="pagination-info" id="paginationInfo"></p>
+      <div class="pagination-controls" id="paginationControls" role="navigation" aria-label="Page navigation"></div>
+    </div>
+
   </div>
 </section>
 
@@ -260,5 +275,172 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+(function () {
+  'use strict';
+  /* ============================================================
+     ARTICLES PAGINATION + FILTER
+     - 6 cards per page
+     - Filter resets to page 1 and re-paginates visible cards
+     - Page change scrolls back to the filter bar
+  ============================================================ */
+  const CARDS_PER_PAGE = 6;
+
+  const filterBtns    = document.querySelectorAll('.filter-btn');
+  const allCards      = Array.from(document.querySelectorAll('.article-card'));
+  const infoEl        = document.getElementById('paginationInfo');
+  const controlsEl    = document.getElementById('paginationControls');
+  const filterBarEl   = document.querySelector('.articles-filter');
+
+  let currentPage     = 1;
+  let activeFilter    = 'all';
+
+  /* ---- helpers ---- */
+  function getVisible() {
+    return allCards.filter(c =>
+      activeFilter === 'all' || c.dataset.category === activeFilter
+    );
+  }
+
+  function totalPages(visible) {
+    return Math.max(1, Math.ceil(visible.length / CARDS_PER_PAGE));
+  }
+
+  /* ---- render cards for the current page ---- */
+  function renderCards() {
+    const visible = getVisible();
+    const pages   = totalPages(visible);
+
+    // clamp page
+    if (currentPage > pages) currentPage = pages;
+
+    const start = (currentPage - 1) * CARDS_PER_PAGE;
+    const end   = start + CARDS_PER_PAGE;
+
+    // hide all cards and reset inline styles
+    allCards.forEach(c => {
+      c.style.display = 'none';
+      c.style.opacity = '';
+      c.style.transform = '';
+      c.style.transition = '';
+    });
+
+    // no results state
+    const grid = document.querySelector('.articles-grid');
+    const existingEmpty = grid.querySelector('.no-results');
+    if (existingEmpty) existingEmpty.remove();
+
+    if (visible.length === 0) {
+      const msg = document.createElement('div');
+      msg.className = 'no-results';
+      msg.innerHTML = '<strong>No articles found</strong><p>Try selecting a different category.</p>';
+      grid.appendChild(msg);
+      infoEl.innerHTML = '';
+      controlsEl.innerHTML = '';
+      return;
+    }
+
+    // show only this page's slice
+    visible.slice(start, end).forEach((c, i) => {
+      c.style.display = '';
+      c.style.opacity = '0';
+      c.style.transform = 'translateY(20px)';
+      c.style.transition = `opacity .35s ease ${i * 60}ms, transform .35s ease ${i * 60}ms`;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          c.style.opacity = '1';
+          c.style.transform = 'translateY(0)';
+        });
+      });
+    });
+
+    renderPagination(visible.length, pages);
+  }
+
+  /* ---- render pagination controls ---- */
+  function renderPagination(total, pages) {
+    const start = (currentPage - 1) * CARDS_PER_PAGE + 1;
+    const end   = Math.min(currentPage * CARDS_PER_PAGE, total);
+
+    infoEl.innerHTML =
+      `Showing <strong>${start}–${end}</strong> of <strong>${total}</strong> article${total !== 1 ? 's' : ''}`;
+
+    controlsEl.innerHTML = '';
+
+    /* Prev button */
+    const prev = makeBtn('← Prev', 'prev-btn', currentPage === 1);
+    prev.addEventListener('click', () => goTo(currentPage - 1));
+    controlsEl.appendChild(prev);
+
+    /* Page number buttons — always show first, last, current ±1, with dots */
+    const nums = buildPageRange(currentPage, pages);
+    nums.forEach(item => {
+      if (item === '…') {
+        const dots = document.createElement('span');
+        dots.className = 'page-dots';
+        dots.textContent = '…';
+        controlsEl.appendChild(dots);
+      } else {
+        const btn = makeBtn(String(item), 'num-btn', false);
+        if (item === currentPage) btn.classList.add('active');
+        btn.setAttribute('aria-label', `Page ${item}`);
+        if (item === currentPage) btn.setAttribute('aria-current', 'page');
+        btn.addEventListener('click', () => goTo(item));
+        controlsEl.appendChild(btn);
+      }
+    });
+
+    /* Next button */
+    const next = makeBtn('Next →', 'next-btn', currentPage === pages);
+    next.addEventListener('click', () => goTo(currentPage + 1));
+    controlsEl.appendChild(next);
+  }
+
+  function makeBtn(label, cls, disabled) {
+    const b = document.createElement('button');
+    b.className = `page-btn ${cls}`;
+    b.textContent = label;
+    b.disabled = disabled;
+    return b;
+  }
+
+  /* produce e.g. [1, 2, '…', 8] or [1, '…', 4, 5, 6, '…', 10] */
+  function buildPageRange(current, total) {
+    if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+    const range = new Set([1, total, current, current - 1, current + 1]
+      .filter(n => n >= 1 && n <= total));
+    const sorted = [...range].sort((a, b) => a - b);
+    const result = [];
+    let prev = 0;
+    for (const n of sorted) {
+      if (n - prev > 1) result.push('…');
+      result.push(n);
+      prev = n;
+    }
+    return result;
+  }
+
+  function goTo(page) {
+    currentPage = page;
+    renderCards();
+    // scroll to top of filter bar
+    filterBarEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  /* ---- filter buttons ---- */
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter  = btn.dataset.filter;
+      currentPage   = 1;
+      renderCards();
+    });
+  });
+
+  /* ---- initial render ---- */
+  renderCards();
+})();
+</script>
 </body>
 </html>
