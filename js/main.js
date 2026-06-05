@@ -62,12 +62,25 @@ form?.addEventListener('submit', e => {
   e.preventDefault();
   const btn = form.querySelector('.form-submit');
   btn.disabled = true;
-  btn.textContent = 'Sending…';
+  btn.textContent = 'Opening email…';
+
+  const firstName = document.getElementById('firstName').value;
+  const lastName = document.getElementById('lastName').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const service = document.getElementById('service').value;
+  const message = document.getElementById('message').value;
+
+  const subject = `New Contact Form Submission from ${firstName} ${lastName}`;
+  const body = `Name: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\n\nMessage:\n${message}`;
+
+  const mailtoLink = `mailto:sammens008@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = mailtoLink;
 
   setTimeout(() => {
     form.style.display = 'none';
     document.getElementById('formSuccess').style.display = 'block';
-  }, 1200);
+  }, 800);
 });
 
 /* ===== ARTICLES FILTER ===== */
