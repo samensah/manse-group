@@ -84,3 +84,42 @@ form?.addEventListener('submit', e => {
 });
 
 /* Articles filter + pagination are handled inline in articles.html */
+
+/* ===== FAVICON — rendered with Inter via canvas ===== */
+(function () {
+  function drawFavicon() {
+    const size = 64;
+    const canvas = document.createElement('canvas');
+    canvas.width  = size;
+    canvas.height = size;
+    const ctx = canvas.getContext('2d');
+
+    /* navy circle */
+    ctx.beginPath();
+    ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+    ctx.fillStyle = '#0B1F3A';
+    ctx.fill();
+
+    /* white "M" in Inter */
+    ctx.fillStyle    = '#FFFFFF';
+    ctx.font         = '800 40px Inter, sans-serif';
+    ctx.textAlign    = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('M', size / 2, size / 2 + 1);
+
+    /* swap out the SVG favicon with the canvas PNG */
+    const existing = document.querySelector("link[rel='icon']");
+    const link     = existing || document.createElement('link');
+    link.rel  = 'icon';
+    link.type = 'image/png';
+    link.href = canvas.toDataURL('image/png');
+    if (!existing) document.head.appendChild(link);
+  }
+
+  /* wait for Inter to be ready before drawing */
+  if (document.fonts && document.fonts.load) {
+    document.fonts.load('800 40px Inter').then(drawFavicon).catch(drawFavicon);
+  } else {
+    window.addEventListener('load', drawFavicon);
+  }
+})();
