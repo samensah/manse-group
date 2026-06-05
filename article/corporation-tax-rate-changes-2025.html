@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Corporation Tax Rate Changes 2025 — Manse Advisory & Analytics</title>
+  <meta name="description" content="We break down the maintained 25% corporation tax main rate, small profits relief thresholds, and what they mean for your year-end planning in 2025." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    /* ===== ARTICLE-SPECIFIC STYLES ===== */
+    .article-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%);
+      padding: 7rem 0 4rem;
+      color: var(--white);
+    }
+    .article-hero-inner { max-width: 780px; margin: 0 auto; }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .82rem;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 1.5rem;
+    }
+    .breadcrumb a { color: rgba(255,255,255,.5); transition: color var(--transition); }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb span { color: rgba(255,255,255,.25); }
+
+    .article-hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+    .article-hero h1 { color: var(--white); margin-bottom: 1.25rem; font-size: clamp(1.6rem, 3.5vw, 2.5rem); }
+    .article-hero .article-summary {
+      color: rgba(255,255,255,.7);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      max-width: 680px;
+    }
+
+    .author-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(201,168,76,.25);
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .author-info .author-name { font-weight: 600; color: var(--white); font-size: .9rem; }
+    .author-info .author-role { font-size: .78rem; color: rgba(255,255,255,.5); }
+    .article-read-time { margin-left: auto; font-size: .78rem; color: rgba(255,255,255,.45); }
+
+    /* ===== ARTICLE BODY ===== */
+    .article-body {
+      padding: 4rem 0 5rem;
+    }
+    .article-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 4rem;
+      align-items: start;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .article-content {
+      font-size: 1.025rem;
+      line-height: 1.8;
+      color: #2d3748;
+    }
+    .article-content h2 {
+      font-size: 1.45rem;
+      color: var(--navy);
+      margin: 2.5rem 0 1rem;
+      padding-bottom: .5rem;
+      border-bottom: 2px solid var(--border);
+    }
+    .article-content h3 {
+      font-size: 1.15rem;
+      color: var(--navy);
+      margin: 1.75rem 0 .65rem;
+    }
+    .article-content p { margin-bottom: 1.25rem; }
+    .article-content ul, .article-content ol {
+      margin: 0 0 1.25rem 1.5rem;
+    }
+    .article-content li { margin-bottom: .5rem; }
+
+    .article-content a {
+      color: var(--navy);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .article-content a:hover { color: var(--gold); }
+
+    /* callout box */
+    .callout {
+      background: rgba(201,168,76,.1);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1.1rem 1.4rem;
+      margin: 1.75rem 0;
+    }
+    .callout strong { color: var(--navy); display: block; margin-bottom: .3rem; }
+    .callout p { margin: 0; font-size: .95rem; color: var(--slate); }
+
+    /* data table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: .93rem;
+    }
+    .data-table th {
+      background: var(--navy);
+      color: var(--white);
+      padding: .7rem 1rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: .82rem;
+      letter-spacing: .04em;
+    }
+    .data-table td {
+      padding: .65rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:nth-child(even) td { background: var(--light); }
+    .data-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); margin: 1.5rem 0; }
+
+    /* key number pull-out */
+    .key-numbers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .key-number {
+      background: var(--navy);
+      border-radius: 10px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+      color: var(--white);
+    }
+    .key-number .kn-val { font-size: 1.75rem; font-weight: 800; color: var(--gold); line-height: 1; }
+    .key-number .kn-label { font-size: .75rem; color: rgba(255,255,255,.6); margin-top: .35rem; }
+
+    /* tags at bottom */
+    .article-tags { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+    .article-tag-link {
+      padding: .3rem .8rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: .78rem;
+      color: var(--muted);
+      transition: var(--transition);
+    }
+    .article-tag-link:hover { border-color: var(--navy); color: var(--navy); }
+
+    /* ===== SIDEBAR ===== */
+    .article-sidebar { position: sticky; top: 90px; }
+
+    .sidebar-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .sidebar-card h4 {
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    /* TOC */
+    .toc-list { display: flex; flex-direction: column; gap: .6rem; }
+    .toc-list a {
+      font-size: .87rem;
+      color: var(--slate);
+      display: flex;
+      align-items: flex-start;
+      gap: .5rem;
+      transition: color var(--transition);
+      line-height: 1.4;
+    }
+    .toc-list a::before {
+      content: '–';
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: .05rem;
+    }
+    .toc-list a:hover { color: var(--navy); }
+
+    /* CTA sidebar */
+    .sidebar-cta {
+      background: var(--navy);
+      border: none;
+      color: var(--white);
+    }
+    .sidebar-cta h4 { color: rgba(255,255,255,.5); }
+    .sidebar-cta p { font-size: .87rem; color: rgba(255,255,255,.65); margin-bottom: 1rem; }
+
+    /* related articles */
+    .related-article {
+      display: flex;
+      gap: .75rem;
+      align-items: flex-start;
+      padding: .75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .related-article:last-child { border-bottom: none; padding-bottom: 0; }
+    .related-article-emoji { font-size: 1.4rem; flex-shrink: 0; }
+    .related-article-text a {
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.35;
+      display: block;
+      margin-bottom: .2rem;
+    }
+    .related-article-text a:hover { color: var(--navy); }
+    .related-article-date { font-size: .73rem; color: var(--muted); }
+
+    /* ===== BACK LINK ===== */
+    .back-to-insights {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      color: var(--muted);
+      font-size: .88rem;
+      font-weight: 500;
+      margin-bottom: 2.5rem;
+      transition: color var(--transition);
+    }
+    .back-to-insights:hover { color: var(--navy); }
+
+    @media (max-width: 860px) {
+      .article-layout { grid-template-columns: 1fr; }
+      .article-sidebar { position: static; }
+      .key-numbers { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 520px) {
+      .key-numbers { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" aria-label="Main navigation">
+  <div class="container nav-inner">
+    <a href="../index.html" class="nav-logo" aria-label="Manse Advisory & Analytics home">
+      <span class="logo-main">MANSE <span>Group</span></span>
+      <span class="logo-sub">Advisory &amp; Analytics</span>
+    </a>
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" role="list">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../index.html#services">Services</a></li>
+      <li><a href="../index.html#why-us">About</a></li>
+      <li><a href="../articles.html">Insights</a></li>
+      <li class="nav-cta"><a href="../contact.html" class="btn btn-primary">Get in Touch</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== ARTICLE HERO ===== -->
+<section class="article-hero">
+  <div class="container">
+    <div class="article-hero-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a>
+        <span>›</span>
+        <a href="../articles.html">Insights</a>
+        <span>›</span>
+        <span style="color:rgba(255,255,255,.75)">Corporation Tax 2025</span>
+      </nav>
+
+      <div class="article-hero-meta">
+        <span class="article-tag" style="background:rgba(201,168,76,.2);color:var(--gold-lt);">Tax &amp; HMRC</span>
+        <time datetime="2025-05-20" style="font-size:.82rem;color:rgba(255,255,255,.5);">20 May 2025</time>
+        <span style="font-size:.82rem;color:rgba(255,255,255,.5);">7 min read</span>
+      </div>
+
+      <h1>Corporation Tax Rate Changes: What Every Director Needs to Know in 2025</h1>
+      <p class="article-summary">Following the Spring Statement, we break down the maintained 25% main rate, small profits relief thresholds, and what they mean for your year-end planning.</p>
+
+      <div class="author-row">
+        <div class="author-avatar">👤</div>
+        <div class="author-info">
+          <div class="author-name">Samuel Mensah</div>
+          <div class="author-role">Director, Manse Advisory &amp; Analytics</div>
+        </div>
+        <div class="article-read-time">7 min read</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ARTICLE BODY ===== -->
+<section class="article-body">
+  <div class="container">
+    <div class="article-layout">
+
+      <!-- Main content -->
+      <main class="article-content" id="article-main">
+
+        <a href="../articles.html" class="back-to-insights">← Back to Insights</a>
+
+        <h2 id="overview">Overview</h2>
+        <p>
+          The 2025 Spring Statement confirmed that HMRC will maintain the current corporation tax structure introduced in April 2023 — a two-tier system with a 25% main rate and a 19% small profits rate, connected by marginal relief. For most UK companies, this means year-end planning has never been more important.
+        </p>
+        <p>
+          In this article we walk through the current rate bands, how marginal relief is calculated, and the practical steps directors and their accountants should take before the financial year closes.
+        </p>
+
+        <div class="key-numbers" aria-label="Key rate figures">
+          <div class="key-number">
+            <div class="kn-val">25%</div>
+            <div class="kn-label">Main rate (profits &gt; £250k)</div>
+          </div>
+          <div class="key-number">
+            <div class="kn-val">19%</div>
+            <div class="kn-label">Small profits rate (&lt; £50k)</div>
+          </div>
+          <div class="key-number">
+            <div class="kn-val">26.5%</div>
+            <div class="kn-label">Effective marginal rate</div>
+          </div>
+        </div>
+
+        <h2 id="rate-bands">The Three Rate Bands Explained</h2>
+        <p>
+          Since 1 April 2023, UK corporation tax has operated on a three-band structure depending on a company's taxable profits in the accounting period:
+        </p>
+
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Taxable Profits</th>
+                <th>Rate Applied</th>
+                <th>Effective Rate</th>
+                <th>Mechanism</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Up to £50,000</td>
+                <td>19%</td>
+                <td>19%</td>
+                <td>Small profits rate</td>
+              </tr>
+              <tr>
+                <td>£50,001 – £250,000</td>
+                <td>25% with relief</td>
+                <td>19% – 25%</td>
+                <td>Marginal relief</td>
+              </tr>
+              <tr>
+                <td>Over £250,000</td>
+                <td>25%</td>
+                <td>25%</td>
+                <td>Main rate</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          The marginal relief band is where planning opportunities are richest — and where directors most often benefit from professional advice. The effective marginal rate within the band is <strong>26.5%</strong>, which is actually <em>higher</em> than the headline 25% main rate — a counterintuitive feature that catches many companies off guard.
+        </p>
+
+        <h2 id="marginal-relief">How Marginal Relief Works</h2>
+        <p>
+          Marginal relief (MR) is calculated using the following formula set out in Corporation Tax Act 2010 s.19:
+        </p>
+        <div class="callout">
+          <strong>Marginal Relief Formula</strong>
+          <p>MR = (Upper Limit – Augmented Profits) × (Taxable Total Profits ÷ Augmented Profits) × Standard Fraction (3/200)</p>
+        </div>
+        <p>
+          The "augmented profits" include dividends from non-group companies. The key takeaway: the more associated companies you have, both the £50,000 and £250,000 thresholds are divided by the number of associated companies plus one. This can significantly affect the applicable rate for groups and related businesses.
+        </p>
+
+        <h3 id="associated-companies">Associated Companies — A Common Trap</h3>
+        <p>
+          From April 2023, HMRC reintroduced the associated companies rules. Two companies are associated if one controls the other, or both are under common control. This means:
+        </p>
+        <ul>
+          <li>A director with two companies sees each company's thresholds halved — to £25,000 and £125,000 respectively.</li>
+          <li>Family shareholdings can trigger association even where there is no formal group structure.</li>
+          <li>Dormant companies <em>can</em> still count as associated if they were active at any point in the period.</li>
+        </ul>
+        <p>
+          This is one of the most misunderstood changes of the 2023 reforms and remains highly relevant for owner-managed businesses in 2025.
+        </p>
+
+        <h2 id="year-end-planning">Year-End Planning: 7 Actions to Take Now</h2>
+        <p>
+          With the rate structure confirmed for 2025, the window before your year-end is the most valuable time to act. Here are the seven areas we typically review with clients:
+        </p>
+        <ol>
+          <li>
+            <strong>Accelerate qualifying capital expenditure.</strong> Full expensing for main pool plant and machinery provides a 100% first-year allowance. Bringing forward capex decisions can reduce profits into a lower band or below the marginal zone entirely.
+          </li>
+          <li>
+            <strong>Review director pension contributions.</strong> Employer pension contributions are fully deductible against corporation tax and don't trigger a benefit-in-kind. Contributions made before year-end reduce taxable profits pound-for-pound — particularly effective if profits sit in the 26.5% marginal band.
+          </li>
+          <li>
+            <strong>Time your salary and bonus payments.</strong> Bonuses accrued but unpaid at year-end are deductible provided they are paid within nine months. If your year-end is 31 March 2025, you have until 31 December 2025.
+          </li>
+          <li>
+            <strong>Assess R&amp;D claim eligibility.</strong> The merged R&amp;D scheme now applies for most companies. If you're developing new software, products or processes, document qualifying activities <em>before</em> year-end to maximise the claim.
+          </li>
+          <li>
+            <strong>Review associated company positions.</strong> If restructuring can lawfully reduce the number of associated companies, thresholds may be restored — lowering the effective rate on profits in the marginal band.
+          </li>
+          <li>
+            <strong>Consider group relief.</strong> If you operate a group, losses in one company can offset profits in another via group relief. Review the group structure now rather than waiting for the tax return.
+          </li>
+          <li>
+            <strong>Defer income where it makes sense.</strong> Deferring invoicing or income recognition into the next period may legitimately reduce current-year profits. This requires careful consideration of accounting standards and commercial reality.
+          </li>
+        </ol>
+
+        <div class="callout">
+          <strong>Important: Don't Guess — Model It</strong>
+          <p>The interaction between profit levels, associated companies, capital allowances and group relief is complex. At Manse Advisory, we build a year-end tax model for every client — typically 6–8 weeks before the period closes — so there's still time to act on the findings. Book a free consultation to get yours.</p>
+        </div>
+
+        <h2 id="quarterly-payments">Quarterly Instalment Payments (QIPs)</h2>
+        <p>
+          If your company's taxable profits exceed £1.5 million (or a lower threshold if you have associated companies), you are required to pay corporation tax in quarterly instalments rather than nine months after the year-end. For periods ending 31 March 2025, the first QIP was due 14 October 2024.
+        </p>
+        <p>
+          Late or underpaid instalments attract HMRC interest at the current rate of 7.25% (base + 2.5%), which has risen significantly since 2022. Accurate quarterly profit forecasting is therefore more valuable than ever.
+        </p>
+
+        <h2 id="looking-ahead">Looking Ahead: What Could Change?</h2>
+        <p>
+          The 2025 Spring Statement did not introduce new corporation tax changes for the current Parliament. However, the Office of Tax Simplification's ongoing review of reliefs, and consultations on further R&amp;D reform, mean the landscape could shift in the Autumn Budget. We recommend:
+        </p>
+        <ul>
+          <li>Subscribing to our Insights updates for real-time commentary on any new announcements.</li>
+          <li>Not locking in multi-year tax structures without a review clause — keep plans flexible.</li>
+          <li>Engaging with your advisor <em>before</em> the Budget, not after.</li>
+        </ul>
+
+        <h2 id="conclusion">Conclusion</h2>
+        <p>
+          The 2025 corporation tax landscape rewards proactive planning. The maintained 25% main rate, combined with the 26.5% effective marginal rate and the reintroduced associated companies rules, means that directors cannot afford to be passive. A well-timed year-end review — addressing capital allowances, pensions, R&amp;D and group structure — can materially reduce your liability within the rules.
+        </p>
+        <p>
+          If you'd like Manse Advisory to model your 2025 position and identify savings opportunities, <a href="../contact.html">get in touch for a free 30-minute consultation</a>.
+        </p>
+
+        <div class="article-tags" aria-label="Article tags">
+          <span>Tags:</span>
+          <a href="../articles.html" class="article-tag-link">Corporation Tax</a>
+          <a href="../articles.html" class="article-tag-link">HMRC</a>
+          <a href="../articles.html" class="article-tag-link">Tax Planning</a>
+          <a href="../articles.html" class="article-tag-link">Marginal Relief</a>
+          <a href="../articles.html" class="article-tag-link">Year-End Planning</a>
+          <a href="../articles.html" class="article-tag-link">Spring Statement 2025</a>
+        </div>
+
+      </main>
+
+      <!-- Sidebar -->
+      <aside class="article-sidebar" aria-label="Article sidebar">
+
+        <!-- TOC -->
+        <div class="sidebar-card">
+          <h4>In This Article</h4>
+          <nav class="toc-list" aria-label="Table of contents">
+            <a href="#overview">Overview</a>
+            <a href="#rate-bands">The Three Rate Bands</a>
+            <a href="#marginal-relief">How Marginal Relief Works</a>
+            <a href="#associated-companies">Associated Companies</a>
+            <a href="#year-end-planning">Year-End Planning: 7 Actions</a>
+            <a href="#quarterly-payments">Quarterly Instalment Payments</a>
+            <a href="#looking-ahead">Looking Ahead</a>
+            <a href="#conclusion">Conclusion</a>
+          </nav>
+        </div>
+
+        <!-- CTA -->
+        <div class="sidebar-card sidebar-cta">
+          <h4>Need Expert Advice?</h4>
+          <p>Book a free 30-minute consultation with our team. We'll review your position and identify savings opportunities before your year-end.</p>
+          <a href="../contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">Book Free Consultation</a>
+        </div>
+
+        <!-- Related articles -->
+        <div class="sidebar-card">
+          <h4>Related Articles</h4>
+          <div>
+            <div class="related-article">
+              <div class="related-article-emoji">🗺️</div>
+              <div class="related-article-text">
+                <a href="#">R&amp;D Tax Relief Reform: Navigating the Merged Scheme</a>
+                <div class="related-article-date">8 Jan 2025</div>
+              </div>
+            </div>
+            <div class="related-article">
+              <div class="related-article-emoji">💡</div>
+              <div class="related-article-text">
+                <a href="#">Using LLMs to Draft Management Account Reports</a>
+                <div class="related-article-date">30 Jan 2025</div>
+              </div>
+            </div>
+            <div class="related-article">
+              <div class="related-article-emoji">📜</div>
+              <div class="related-article-text">
+                <a href="#">FRS 102 Revised: Key Changes to UK GAAP</a>
+                <div class="related-article-date">14 Apr 2025</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="nav-logo">
+          <span class="logo-main">MANSE <span>Group</span></span>
+          <span class="logo-sub">Advisory &amp; Analytics</span>
+        </a>
+        <p>AI-powered accountancy and financial advisory for UK businesses and individuals. Accurate, proactive, and always on time.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul role="list">
+          <li><a href="../index.html#services">Corporation Tax</a></li>
+          <li><a href="../index.html#services">Company Accounts</a></li>
+          <li><a href="../index.html#services">Self Assessment</a></li>
+          <li><a href="../index.html#services">VAT Returns</a></li>
+          <li><a href="../index.html#services">Payroll</a></li>
+          <li><a href="../index.html#services">Tax Planning</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul role="list">
+          <li><a href="../index.html#why-us">About Us</a></li>
+          <li><a href="../articles.html">Insights</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul role="list">
+          <li><a href="mailto:hello@manseadvisory.co.uk">hello@manseadvisory.co.uk</a></li>
+          <li><a href="tel:+447892408873">+44 (0)7892 408873</a></li>
+          <li><a href="../contact.html">Send a message</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 Manse Advisory &amp; Analytics Ltd. All rights reserved.</span>
+      <span><a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Service</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+  /* Highlight active TOC link on scroll */
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  const headings = document.querySelectorAll('.article-content h2[id], .article-content h3[id]');
+
+  const tocObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(a => a.style.color = '');
+        const active = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+        if (active) active.style.color = 'var(--navy)';
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  headings.forEach(h => tocObserver.observe(h));
+</script>
+</body>
+</html>
