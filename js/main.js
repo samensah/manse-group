@@ -85,6 +85,59 @@ form?.addEventListener('submit', e => {
 
 /* Articles filter + pagination are handled inline in articles.html */
 
+/* ===== NAV DROPDOWN (Resources menu) ===== */
+document.querySelectorAll('.nav-item-dropdown').forEach(item => {
+  const trigger = item.querySelector('.nav-dropdown-trigger');
+  trigger?.addEventListener('click', e => {
+    // on mobile the dropdown is toggled; on desktop CSS hover handles it
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      item.classList.toggle('open');
+    }
+  });
+});
+
+/* ===== COOKIE CONSENT ===== */
+(function () {
+  const CONSENT_KEY = 'manse_cookie_consent';
+  const banner      = document.getElementById('cookieBanner');
+  if (!banner) return;
+
+  function applyConsent(state) {
+    localStorage.setItem(CONSENT_KEY, state);
+    // Update GA4 consent mode
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', { analytics_storage: state === 'granted' ? 'granted' : 'denied' });
+    }
+    // Load Tawk.to live chat only on consent
+    if (state === 'granted') loadTawkTo();
+    banner.classList.remove('visible');
+  }
+
+  // Only show banner if user hasn't decided yet — show immediately on first visit
+  if (!localStorage.getItem(CONSENT_KEY)) {
+    banner.classList.add('visible');
+  } else if (localStorage.getItem(CONSENT_KEY) === 'granted') {
+    loadTawkTo();
+  }
+
+  document.getElementById('cookieAccept')?.addEventListener('click', () => applyConsent('granted'));
+  document.getElementById('cookieDecline')?.addEventListener('click', () => applyConsent('denied'));
+})();
+
+/* ===== TAWK.TO LIVE CHAT ===== */
+function loadTawkTo() {
+  if (window.Tawk_API) return; // already loaded
+  window.Tawk_API = window.Tawk_API || {};
+  window.Tawk_LoadStart = new Date();
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://embed.tawk.to/6a2394128705f01c35097189/1jqdfkqfv';
+  s.charset = 'UTF-8';
+  s.setAttribute('crossorigin', '*');
+  document.head.appendChild(s);
+}
+
 /* ===== FAVICON — rendered with Inter via canvas ===== */
 (function () {
   function drawFavicon() {

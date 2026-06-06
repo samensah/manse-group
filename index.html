@@ -10,15 +10,33 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="stylesheet" href="css/style.css" />
-    <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XYK1B6R14M"></script>
+  <!-- GA4 Consent Mode default (must be before gtag loads) -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      analytics_storage: localStorage.getItem('manse_cookie_consent') === 'granted' ? 'granted' : 'denied'
+    });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XYK1B6R14M"></script>
+  <script>
     gtag('js', new Date());
     gtag('config', 'G-XYK1B6R14M');
   </script>
 </head>
+<!-- Start of Tawk.to Script
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/6a2394128705f01c35097189/1jqdfkqfv';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+</script> -->
+<!--End of Tawk.to Script-->
 <body>
 
 <!-- ===== NAVBAR ===== -->
@@ -36,6 +54,14 @@
       <li><a href="index.html#services">Services</a></li>
       <li><a href="index.html#why-us">About</a></li>
       <li><a href="articles.html">Insights</a></li>
+      <li class="nav-item-dropdown">
+        <a href="#" class="nav-dropdown-trigger">Resources <span class="chevron">▾</span></a>
+        <ul class="nav-dropdown">
+          <li><a href="deadlines.html"><span class="dd-icon">📅</span> Tax Deadlines</a></li>
+          <li><a href="calculator.html"><span class="dd-icon">🧮</span> Tax Calculator</a></li>
+          <li><a href="policies.html"><span class="dd-icon">📋</span> Policy Updates</a></li>
+        </ul>
+      </li>
       <li class="nav-cta"><a href="contact.html" class="btn btn-primary">Get in Touch</a></li>
     </ul>
   </div>
@@ -103,6 +129,35 @@
         </div>
         <div class="card-float-body">Year-round planning models built by AI, stress-tested by your advisor — so you keep more of what you earn.</div>
         <div class="ai-chip">⚡ £4,200 saving identified</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ACCREDITATION STRIP ===== -->
+<section class="accreditation" aria-label="Professional accreditations">
+  <div class="container accreditation-inner">
+    <span class="accreditation-label">Trusted &amp; Accredited Professionals</span>
+    <div class="badges-row">
+      <div class="badge">
+        <span class="badge-abbr">ACA</span>
+        <span class="badge-name">ICAEW Chartered Accountant</span>
+      </div>
+      <div class="badge">
+        <span class="badge-abbr">CIMA</span>
+        <span class="badge-name">Chartered Management Accountant</span>
+      </div>
+      <div class="badge">
+        <span class="badge-abbr">ACCA</span>
+        <span class="badge-name">Certified Chartered Accountant</span>
+      </div>
+      <div class="badge">
+        <span class="badge-abbr">AAT</span>
+        <span class="badge-name">Accounting Technician</span>
+      </div>
+      <div class="badge">
+        <span class="badge-abbr">HMRC</span>
+        <span class="badge-name">Registered Tax Agent</span>
       </div>
     </div>
   </div>
@@ -306,5 +361,20 @@
 </footer>
 
 <script src="js/main.js"></script>
+
+<!-- ===== COOKIE CONSENT BANNER ===== -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent" aria-live="polite">
+  <div class="cookie-inner">
+    <p class="cookie-text">
+      🍪 <strong>We use cookies</strong> to analyse site traffic and improve your experience.
+      By clicking "Accept All" you consent to our use of analytics cookies.
+      <a href="#">Privacy Policy</a>
+    </p>
+    <div class="cookie-actions">
+      <button class="btn-cookie-decline" id="cookieDecline">Decline</button>
+      <button class="btn-cookie-accept" id="cookieAccept">Accept All</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>

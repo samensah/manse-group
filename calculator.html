@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tax Savings Calculator 2025/26 — MANSE Group</title>
+  <meta name="description" content="Free UK tax calculator for 2025/26. Compare salary vs dividends, estimate your Self Assessment bill, and find the most tax-efficient pay structure." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      analytics_storage: localStorage.getItem('manse_cookie_consent') === 'granted' ? 'granted' : 'denied'
+    });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XYK1B6R14M"></script>
+  <script>gtag('js', new Date()); gtag('config', 'G-XYK1B6R14M');</script>
+</head>
+<!-- Start of Tawk.to Script
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/6a2394128705f01c35097189/1jqdfkqfv';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+</script> -->
+<body>
+
+<nav class="navbar" aria-label="Main navigation">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-main">MANSE <span>Group</span></span>
+      <span class="logo-sub">Advisory &amp; Analytics</span>
+    </a>
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#why-us">About</a></li>
+      <li><a href="articles.html">Insights</a></li>
+      <li class="nav-item-dropdown">
+        <a href="#" class="nav-dropdown-trigger">Resources <span class="chevron">▾</span></a>
+        <ul class="nav-dropdown">
+          <li><a href="deadlines.html"><span class="dd-icon">📅</span> Tax Deadlines</a></li>
+          <li><a href="calculator.html"><span class="dd-icon">🧮</span> Tax Calculator</a></li>
+          <li><a href="policies.html"><span class="dd-icon">📋</span> Policy Updates</a></li>
+        </ul>
+      </li>
+      <li class="nav-cta"><a href="contact.html" class="btn btn-primary">Get in Touch</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="calc-hero">
+  <div class="container">
+    <p class="section-label">Resources</p>
+    <h1>Tax Savings Calculator</h1>
+    <p>Compare salary vs dividends, estimate your personal tax bill, and see how much you could save with the right structure. Updated for 2025/26.</p>
+  </div>
+</section>
+
+<section class="calc-section">
+  <div class="container">
+
+    <div class="calc-tabs" role="tablist">
+      <button class="calc-tab active" role="tab" aria-selected="true"  data-tab="divCalc">💰 Salary vs Dividends</button>
+      <button class="calc-tab"        role="tab" aria-selected="false" data-tab="saCalc">📄 Self Assessment Estimate</button>
+    </div>
+
+    <!-- ===== TAB 1: SALARY VS DIVIDENDS ===== -->
+    <div class="calc-panel active" id="divCalc" role="tabpanel">
+      <div class="calc-grid">
+
+        <div class="calc-inputs">
+          <h3>Your Company &amp; Pay Details</h3>
+
+          <div class="calc-field">
+            <label for="companyProfit">Company profit before salary &amp; tax (£)</label>
+            <input type="number" id="companyProfit" value="80000" min="0" max="2000000" step="1000" />
+          </div>
+
+          <div class="calc-field">
+            <label for="salaryAmount">Director salary (£) <span>— recommended: £12,570 (personal allowance)</span></label>
+            <input type="range" id="salarySlider" min="0" max="50270" step="100" value="12570" />
+            <input type="number" id="salaryAmount" value="12570" min="0" max="50270" step="100" />
+            <div class="range-labels"><span>£0</span><span>£50,270</span></div>
+          </div>
+
+          <div class="calc-field">
+            <label for="otherIncome">Other personal income (£) <span>— rental, freelance, etc.</span></label>
+            <input type="number" id="otherIncome" value="0" min="0" max="500000" step="500" />
+          </div>
+
+          <div class="calc-field">
+            <label for="taxYear">Tax Year</label>
+            <select id="taxYear" style="width:100%;padding:.65rem 1rem;border:1px solid var(--border);border-radius:var(--radius);font-family:inherit;font-size:.9rem;">
+              <option value="2526" selected>2025/26</option>
+              <option value="2425">2024/25</option>
+            </select>
+          </div>
+
+          <button class="btn btn-navy" id="calcDivBtn" style="width:100%;justify-content:center;margin-top:.5rem;">Calculate →</button>
+        </div>
+
+        <div class="calc-results" id="divResults">
+          <div class="result-card">
+            <h3>Company Tax</h3>
+            <div class="result-row"><span class="label">Profit before salary</span><span class="value" id="r_profit">—</span></div>
+            <div class="result-row"><span class="label">Less: Director salary</span><span class="value negative" id="r_salary_ded">—</span></div>
+            <div class="result-row"><span class="label">Less: Employer NIC</span><span class="value negative" id="r_emp_nic">—</span></div>
+            <div class="result-row"><span class="label">Taxable profit</span><span class="value" id="r_taxable_profit">—</span></div>
+            <div class="result-row"><span class="label">Corporation tax</span><span class="value negative" id="r_corp_tax">—</span></div>
+            <div class="result-row total"><span class="label">Available for dividends</span><span class="value positive" id="r_available_div">—</span></div>
+          </div>
+
+          <div class="result-card">
+            <h3>Your Personal Tax</h3>
+            <div class="result-row"><span class="label">Salary received</span><span class="value" id="r_salary_rec">—</span></div>
+            <div class="result-row"><span class="label">Income tax on salary</span><span class="value negative" id="r_inc_tax_sal">—</span></div>
+            <div class="result-row"><span class="label">Employee NIC</span><span class="value negative" id="r_emp_nic2">—</span></div>
+            <div class="result-row"><span class="label">Dividends taken</span><span class="value" id="r_divs">—</span></div>
+            <div class="result-row"><span class="label">Dividend tax</span><span class="value negative" id="r_div_tax">—</span></div>
+          </div>
+
+          <div class="result-card" style="border-color:var(--gold);">
+            <h3>Summary</h3>
+            <div class="result-row"><span class="label">Total tax &amp; NIC paid</span><span class="value negative" id="r_total_tax">—</span></div>
+            <div class="result-row"><span class="label">Effective overall rate</span><span class="value" id="r_eff_rate">—</span></div>
+            <div class="result-highlight">
+              <div><div class="rh-label">Net take-home pay</div></div>
+              <div class="rh-value" id="r_takehome">—</div>
+            </div>
+          </div>
+
+          <p class="calc-disclaimer">
+            ℹ️ This calculator provides estimates only using 2025/26 rates. It does not account for pension contributions, gift aid, student loans, or all personal circumstances. <a href="contact.html">Speak to an advisor</a> for a precise calculation.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== TAB 2: SELF ASSESSMENT ===== -->
+    <div class="calc-panel" id="saCalc" role="tabpanel">
+      <div class="calc-grid">
+
+        <div class="calc-inputs">
+          <h3>Your 2025/26 Income</h3>
+
+          <div class="calc-field">
+            <label for="sa_employment">Employment income (£) <span>— gross salary from P60</span></label>
+            <input type="number" id="sa_employment" value="0" min="0" step="500" />
+          </div>
+          <div class="calc-field">
+            <label for="sa_selfemploy">Self-employment / freelance profit (£)</label>
+            <input type="number" id="sa_selfemploy" value="0" min="0" step="500" />
+          </div>
+          <div class="calc-field">
+            <label for="sa_rental">Rental income profit (£) <span>— after allowable expenses</span></label>
+            <input type="number" id="sa_rental" value="0" min="0" step="500" />
+          </div>
+          <div class="calc-field">
+            <label for="sa_dividends">Dividends received (£)</label>
+            <input type="number" id="sa_dividends" value="0" min="0" step="500" />
+          </div>
+          <div class="calc-field">
+            <label for="sa_savings">Savings interest (£)</label>
+            <input type="number" id="sa_savings" value="0" min="0" step="100" />
+          </div>
+          <div class="calc-field">
+            <label for="sa_pension">Pension contributions this year (£) <span>— reduces your taxable income</span></label>
+            <input type="number" id="sa_pension" value="0" min="0" step="100" />
+          </div>
+
+          <button class="btn btn-navy" id="calcSaBtn" style="width:100%;justify-content:center;margin-top:.5rem;">Estimate Bill →</button>
+        </div>
+
+        <div class="calc-results" id="saResults">
+          <div class="result-card">
+            <h3>Income Breakdown</h3>
+            <div class="result-row"><span class="label">Total gross income</span><span class="value" id="sa_r_gross">—</span></div>
+            <div class="result-row"><span class="label">Less: Personal allowance</span><span class="value negative" id="sa_r_pa">—</span></div>
+            <div class="result-row"><span class="label">Less: Pension relief</span><span class="value negative" id="sa_r_pension">—</span></div>
+            <div class="result-row total"><span class="label">Taxable income</span><span class="value" id="sa_r_taxable">—</span></div>
+          </div>
+
+          <div class="result-card">
+            <h3>Tax &amp; NIC Due</h3>
+            <div class="result-row"><span class="label">Income tax</span><span class="value negative" id="sa_r_it">—</span></div>
+            <div class="result-row"><span class="label">Dividend tax</span><span class="value negative" id="sa_r_dt">—</span></div>
+            <div class="result-row"><span class="label">Class 4 NIC (self-employed)</span><span class="value negative" id="sa_r_nic">—</span></div>
+            <div class="result-row total"><span class="label">Estimated SA bill</span><span class="value negative" id="sa_r_bill">—</span></div>
+          </div>
+
+          <div class="result-card" style="border-color:var(--gold);">
+            <div class="result-highlight">
+              <div><div class="rh-label">Estimated net income</div></div>
+              <div class="rh-value" id="sa_r_net">—</div>
+            </div>
+            <div class="result-row" style="margin-top:.75rem;"><span class="label">Effective tax rate</span><span class="value" id="sa_r_rate">—</span></div>
+          </div>
+
+          <p class="calc-disclaimer">
+            ℹ️ Estimates use 2025/26 rates: personal allowance £12,570, basic rate 20%, higher rate 40%, dividend allowance £500. Student loan repayments, capital gains and all reliefs are not included. <a href="contact.html">Get a precise estimate from our team →</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container" style="text-align:center;">
+    <h2>Want us to run the real numbers?</h2>
+    <p style="color:rgba(255,255,255,.65);max-width:480px;margin:0 auto 2rem;">Our advisors can model your exact position — including pension, R&amp;D relief, group structures and more.</p>
+    <a href="contact.html" class="btn btn-primary">Book a Free Consultation</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <span class="logo-main">MANSE <span>Group</span></span>
+          <span class="logo-sub">Advisory &amp; Analytics</span>
+        </a>
+        <p>AI-powered accountancy and financial advisory for UK businesses and individuals.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul role="list">
+          <li><a href="index.html#services">Corporation Tax</a></li>
+          <li><a href="index.html#services">VAT Returns</a></li>
+          <li><a href="index.html#services">Payroll</a></li>
+          <li><a href="index.html#services">Tax Planning</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul role="list">
+          <li><a href="deadlines.html">Tax Deadlines</a></li>
+          <li><a href="calculator.html">Tax Calculator</a></li>
+          <li><a href="policies.html">Policy Updates</a></li>
+          <li><a href="articles.html">Insights</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul role="list">
+          <li><a href="mailto:manse.advisoryanalytics@gmail.com">manse.advisoryanalytics@gmail.com</a></li>
+          <li><a href="tel:+447892408873">+44 (0)7892 408873</a></li>
+          <li><a href="contact.html">Send a message</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 Manse Advisory &amp; Analytics Ltd. All rights reserved.</span>
+      <span><a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Service</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent" aria-live="polite">
+  <div class="cookie-inner">
+    <p class="cookie-text">🍪 <strong>We use cookies</strong> to analyse site traffic and improve your experience. <a href="#">Privacy Policy</a></p>
+    <div class="cookie-actions">
+      <button class="btn-cookie-decline" id="cookieDecline">Decline</button>
+      <button class="btn-cookie-accept" id="cookieAccept">Accept All</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ===== TAX CONSTANTS 2025/26 ===== */
+  const PA       = 12570;   // Personal allowance
+  const BR_LIMIT = 50270;   // Basic rate upper limit
+  const HR_LIMIT = 125140;  // Higher rate upper limit
+  const DIV_ALLOW = 500;    // Dividend allowance
+  const CORP_SMALL = 19/100;
+  const CORP_MAIN  = 25/100;
+  const CORP_LOW   = 50000;
+  const CORP_HIGH  = 250000;
+
+  function fmt(n) {
+    return '£' + Math.round(n).toLocaleString('en-GB');
+  }
+  function pct(n) { return (n * 100).toFixed(1) + '%'; }
+
+  /* Corporation tax with marginal relief */
+  function corpTax(profit) {
+    if (profit <= 0) return 0;
+    if (profit <= CORP_LOW)  return profit * CORP_SMALL;
+    if (profit >= CORP_HIGH) return profit * CORP_MAIN;
+    const grossTax = profit * CORP_MAIN;
+    const relief   = (CORP_HIGH - profit) * (3/200);
+    return grossTax - relief;
+  }
+
+  /* Income tax on non-dividend income */
+  function incomeTax(income, pa) {
+    const taxable = Math.max(0, income - pa);
+    const basic   = Math.min(taxable, BR_LIMIT - pa);
+    const higher  = Math.min(Math.max(0, taxable - (BR_LIMIT - pa)), HR_LIMIT - BR_LIMIT);
+    const addl    = Math.max(0, taxable - (HR_LIMIT - pa));
+    return basic * 0.20 + higher * 0.40 + addl * 0.45;
+  }
+
+  /* Dividend tax — dividends sit on top of other income */
+  function dividendTax(divs, otherIncome, pa) {
+    if (divs <= 0) return 0;
+    const taxableDiv = Math.max(0, divs - DIV_ALLOW);
+    // How much of the basic rate band is used by other income?
+    const otherTaxable = Math.max(0, otherIncome - pa);
+    const basicUsed    = Math.min(otherTaxable, BR_LIMIT - pa);
+    const basicLeft    = Math.max(0, (BR_LIMIT - pa) - basicUsed);
+    const basicDiv     = Math.min(taxableDiv, basicLeft);
+    const higherDiv    = Math.min(Math.max(0, taxableDiv - basicLeft), HR_LIMIT - BR_LIMIT);
+    const addlDiv      = Math.max(0, taxableDiv - basicLeft - (HR_LIMIT - BR_LIMIT));
+    return basicDiv * 0.0875 + higherDiv * 0.3375 + addlDiv * 0.3935;
+  }
+
+  /* Employee NIC: 8% on £12,570–£50,270, 2% above */
+  function empNIC(salary) {
+    if (salary <= 12570) return 0;
+    const band1 = Math.min(salary, 50270) - 12570;
+    const band2 = Math.max(0, salary - 50270);
+    return band1 * 0.08 + band2 * 0.02;
+  }
+
+  /* Employer NIC: 15% above £5,000 secondary threshold (2025/26) */
+  function empNICer(salary) {
+    return Math.max(0, salary - 5000) * 0.15;
+  }
+
+  /* ===== SALARY VS DIVIDENDS CALCULATOR ===== */
+  function calcDividends() {
+    const profit      = parseFloat(document.getElementById('companyProfit').value) || 0;
+    const salary      = parseFloat(document.getElementById('salaryAmount').value)  || 0;
+    const otherIncome = parseFloat(document.getElementById('otherIncome').value)   || 0;
+
+    const erNIC         = empNICer(salary);
+    const taxableProfit = Math.max(0, profit - salary - erNIC);
+    const ct            = corpTax(taxableProfit);
+    const availableDiv  = Math.max(0, taxableProfit - ct);
+
+    const totalPersonalIncome = salary + otherIncome;
+    const itOnSalary          = incomeTax(totalPersonalIncome, PA) - incomeTax(otherIncome, PA);
+    const eeNIC               = empNIC(salary);
+    const divTax              = dividendTax(availableDiv, totalPersonalIncome, PA);
+
+    const totalTax   = ct + itOnSalary + eeNIC + erNIC + divTax;
+    const takeHome   = salary - itOnSalary - eeNIC + availableDiv - divTax;
+    const effRate    = profit > 0 ? totalTax / profit : 0;
+
+    document.getElementById('r_profit').textContent        = fmt(profit);
+    document.getElementById('r_salary_ded').textContent    = fmt(-salary);
+    document.getElementById('r_emp_nic').textContent       = fmt(-erNIC);
+    document.getElementById('r_taxable_profit').textContent= fmt(taxableProfit);
+    document.getElementById('r_corp_tax').textContent      = fmt(-ct);
+    document.getElementById('r_available_div').textContent = fmt(availableDiv);
+    document.getElementById('r_salary_rec').textContent    = fmt(salary);
+    document.getElementById('r_inc_tax_sal').textContent   = fmt(-itOnSalary);
+    document.getElementById('r_emp_nic2').textContent      = fmt(-eeNIC);
+    document.getElementById('r_divs').textContent          = fmt(availableDiv);
+    document.getElementById('r_div_tax').textContent       = fmt(-divTax);
+    document.getElementById('r_total_tax').textContent     = fmt(-totalTax);
+    document.getElementById('r_eff_rate').textContent      = pct(effRate);
+    document.getElementById('r_takehome').textContent      = fmt(takeHome);
+  }
+
+  /* Sync salary slider ↔ number input */
+  const slider = document.getElementById('salarySlider');
+  const input  = document.getElementById('salaryAmount');
+  slider?.addEventListener('input', () => { input.value = slider.value; });
+  input?.addEventListener('input',  () => { slider.value = input.value; });
+
+  document.getElementById('calcDivBtn')?.addEventListener('click', calcDividends);
+  calcDividends(); // run on load
+
+  /* ===== SELF ASSESSMENT CALCULATOR ===== */
+  function calcSA() {
+    const employment = parseFloat(document.getElementById('sa_employment').value) || 0;
+    const selfEmp    = parseFloat(document.getElementById('sa_selfemploy').value) || 0;
+    const rental     = parseFloat(document.getElementById('sa_rental').value)     || 0;
+    const dividends  = parseFloat(document.getElementById('sa_dividends').value)  || 0;
+    const savings    = parseFloat(document.getElementById('sa_savings').value)    || 0;
+    const pension    = parseFloat(document.getElementById('sa_pension').value)    || 0;
+
+    const grossIncome     = employment + selfEmp + rental + savings;
+    const pensionRelief   = Math.min(pension, grossIncome);
+    const effectivePA     = Math.max(0, PA - Math.max(0, (grossIncome + dividends - 100000) / 2));
+    const taxableNonDiv   = Math.max(0, grossIncome - effectivePA - pensionRelief);
+
+    // Income tax bands
+    const basic  = Math.min(taxableNonDiv, BR_LIMIT - PA);
+    const higher = Math.min(Math.max(0, taxableNonDiv - (BR_LIMIT - PA)), HR_LIMIT - BR_LIMIT);
+    const addl   = Math.max(0, taxableNonDiv - (HR_LIMIT - PA));
+    const it     = basic * 0.20 + higher * 0.40 + addl * 0.45;
+
+    const dt  = dividendTax(dividends, grossIncome, effectivePA);
+
+    // Class 4 NIC on self-employment profit
+    const nic4 = selfEmp > 12570
+      ? Math.min(selfEmp, 50270) * 0.09 - 12570 * 0.09 + Math.max(0, selfEmp - 50270) * 0.02
+      : 0;
+
+    const totalBill = it + dt + nic4;
+    const netIncome = grossIncome + dividends - totalBill;
+
+    document.getElementById('sa_r_gross').textContent   = fmt(grossIncome + dividends);
+    document.getElementById('sa_r_pa').textContent      = fmt(-effectivePA);
+    document.getElementById('sa_r_pension').textContent = fmt(-pensionRelief);
+    document.getElementById('sa_r_taxable').textContent = fmt(taxableNonDiv);
+    document.getElementById('sa_r_it').textContent      = fmt(-it);
+    document.getElementById('sa_r_dt').textContent      = fmt(-dt);
+    document.getElementById('sa_r_nic').textContent     = fmt(-nic4);
+    document.getElementById('sa_r_bill').textContent    = fmt(-totalBill);
+    document.getElementById('sa_r_net').textContent     = fmt(netIncome);
+    const rate = (grossIncome + dividends) > 0 ? totalBill / (grossIncome + dividends) : 0;
+    document.getElementById('sa_r_rate').textContent    = pct(rate);
+  }
+
+  document.getElementById('calcSaBtn')?.addEventListener('click', calcSA);
+
+  /* ===== TABS ===== */
+  document.querySelectorAll('.calc-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.calc-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      document.querySelectorAll('.calc-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected','true');
+      document.getElementById(tab.dataset.tab)?.classList.add('active');
+    });
+  });
+
+})();
+</script>
+</body>
+</html>
