@@ -110,7 +110,7 @@ document.querySelectorAll('.nav-item-dropdown').forEach(item => {
       gtag('consent', 'update', { analytics_storage: state === 'granted' ? 'granted' : 'denied' });
     }
     // Load Tawk.to live chat only on consent
-    if (state === 'granted') loadTawkTo();
+    // if (state === 'granted') loadTawkTo();
     banner.classList.remove('visible');
   }
 
@@ -118,16 +118,17 @@ document.querySelectorAll('.nav-item-dropdown').forEach(item => {
   if (!localStorage.getItem(CONSENT_KEY)) {
     banner.classList.add('visible');
   } else if (localStorage.getItem(CONSENT_KEY) === 'granted') {
-    loadTawkTo();
+    // loadTawkTo();
   }
 
   document.getElementById('cookieAccept')?.addEventListener('click', () => applyConsent('granted'));
   document.getElementById('cookieDecline')?.addEventListener('click', () => applyConsent('denied'));
 })();
 
-/* ===== TAWK.TO LIVE CHAT ===== */
+/* ===== TAWK.TO LIVE CHAT (commented out — uncomment to re-enable) ===== */
+/*
 function loadTawkTo() {
-  if (window.Tawk_API) return; // already loaded
+  if (window.Tawk_API) return;
   window.Tawk_API = window.Tawk_API || {};
   window.Tawk_LoadStart = new Date();
   const s = document.createElement('script');
@@ -137,6 +138,7 @@ function loadTawkTo() {
   s.setAttribute('crossorigin', '*');
   document.head.appendChild(s);
 }
+*/
 
 /* ===== FAVICON — rendered with Inter via canvas ===== */
 (function () {
