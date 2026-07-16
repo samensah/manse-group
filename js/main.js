@@ -1,8 +1,10 @@
 /* ===== NAVBAR SCROLL ===== */
 const navbar = document.querySelector('.navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 20);
-});
+if (navbar) {
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+}
 
 /* ===== MOBILE HAMBURGER ===== */
 const hamburger = document.querySelector('.hamburger');
@@ -55,6 +57,64 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 
 fadeEls.forEach(el => observer.observe(el));
+
+/* ===== PRE-LAUNCH FRONT DOOR ===== */
+(function () {
+  const gate = document.getElementById('launchGate');
+  if (!gate) return;
+
+  const previewButton = document.getElementById('launchPreview');
+  const countdown = document.getElementById('launchCountdown');
+  const waitlistForm = document.getElementById('launchWaitlistForm');
+  const formNote = document.getElementById('launchFormNote');
+  const launchAt = new Date(gate.dataset.launchDate).getTime();
+  const coveredPage = [...document.body.children].filter(element => element !== gate && element.tagName !== 'SCRIPT');
+
+  document.body.classList.add('launch-locked');
+  coveredPage.forEach(element => element.setAttribute('inert', ''));
+
+  function updateCountdown() {
+    const remaining = Math.max(0, launchAt - Date.now());
+    const units = {
+      days: Math.floor(remaining / 86400000),
+      hours: Math.floor((remaining / 3600000) % 24),
+      minutes: Math.floor((remaining / 60000) % 60),
+      seconds: Math.floor((remaining / 1000) % 60)
+    };
+
+    Object.entries(units).forEach(([unit, value]) => {
+      const output = countdown?.querySelector(`[data-unit="${unit}"]`);
+      if (output) output.textContent = String(value).padStart(2, '0');
+    });
+  }
+
+  updateCountdown();
+  const timer = window.setInterval(updateCountdown, 1000);
+
+  previewButton?.addEventListener('click', () => {
+    gate.classList.add('is-hidden');
+    document.body.classList.remove('launch-locked');
+    coveredPage.forEach(element => element.removeAttribute('inert'));
+    window.clearInterval(timer);
+    window.setTimeout(() => gate.setAttribute('hidden', ''), 600);
+  });
+
+  waitlistForm?.addEventListener('submit', event => {
+    event.preventDefault();
+    const emailInput = document.getElementById('launchEmail');
+
+    if (!emailInput?.checkValidity()) {
+      emailInput?.reportValidity();
+      return;
+    }
+
+    const subject = 'MANSE pre-launch waitlist request';
+    const body = `Please add ${emailInput.value} to the MANSE launch waitlist.`;
+    formNote.textContent = 'Your email draft is ready—send it to confirm your place.';
+    formNote.classList.add('is-success');
+    window.location.href = `mailto:manse.advisoryanalytics@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+})();
 
 /* ===== CONTACT FORM ===== */
 const form = document.getElementById('contactForm');
