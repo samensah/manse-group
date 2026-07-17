@@ -128,6 +128,7 @@ fadeEls.forEach(el => observer.observe(el));
 
   const gate = document.getElementById('launchGate');
 
+  const launchMain = gate.querySelector('.launch-main');
   const countdown = document.getElementById('launchCountdown');
   const waitlistForm = document.getElementById('launchWaitlistForm');
   const formNote = document.getElementById('launchFormNote');
@@ -136,6 +137,30 @@ fadeEls.forEach(el => observer.observe(el));
 
   document.body.classList.add('launch-locked');
   coveredPage.forEach(element => element.setAttribute('inert', ''));
+
+  function fitLaunchPage() {
+    launchMain.style.transform = '';
+    launchMain.style.transformOrigin = '';
+    gate.classList.remove('launch-compact', 'launch-tight');
+
+    if (launchMain.scrollHeight > launchMain.clientHeight + 1) {
+      gate.classList.add('launch-compact');
+    }
+
+    if (launchMain.scrollHeight > launchMain.clientHeight + 1) {
+      gate.classList.add('launch-tight');
+    }
+
+    if (launchMain.scrollHeight > launchMain.clientHeight + 1) {
+      const fitScale = Math.min(1, (launchMain.clientHeight - 2) / launchMain.scrollHeight);
+      launchMain.style.transform = `scale(${fitScale})`;
+      launchMain.style.transformOrigin = 'center center';
+    }
+  }
+
+  fitLaunchPage();
+  window.addEventListener('resize', fitLaunchPage);
+  document.fonts?.ready.then(fitLaunchPage);
 
   function updateCountdown() {
     const remaining = Math.max(0, launchAt - Date.now());

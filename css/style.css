@@ -111,6 +111,7 @@ body.launch-locked { overflow: hidden; }
 
 .launch-main {
   width: min(1420px, 100%);
+  height: 100%;
   min-height: 0;
   margin: auto;
   padding: clamp(3rem, 7vh, 6.5rem) 0;
@@ -119,6 +120,36 @@ body.launch-locked { overflow: hidden; }
   align-items: center;
   gap: clamp(3rem, 8vw, 9rem);
 }
+
+/* Applied by main.js only when the rendered content exceeds the available viewport row. */
+.launch-gate.launch-compact .launch-header { padding-block: .9rem; }
+.launch-gate.launch-compact .launch-main { padding-block: 1rem; }
+.launch-gate.launch-compact .launch-kicker { margin-bottom: .8rem; }
+.launch-gate.launch-compact .launch-copy h1 {
+  margin-bottom: .8rem;
+  font-size: clamp(2.35rem, 4.5vw, 4.6rem);
+}
+.launch-gate.launch-compact .launch-intro { font-size: .95rem; line-height: 1.5; }
+.launch-gate.launch-compact .launch-form { margin-top: 1rem; }
+.launch-gate.launch-compact .launch-trust { margin-top: .8rem; }
+.launch-gate.launch-compact .launch-panel { padding: 1.25rem 1.5rem; }
+.launch-gate.launch-compact .launch-panel-copy { margin: 1.2rem 0 .8rem; }
+.launch-gate.launch-compact .launch-countdown { padding-block: .85rem; }
+.launch-gate.launch-compact .launch-progress { margin-block: .8rem; }
+.launch-gate.launch-compact .launch-arrow { width: 32px; height: 32px; }
+
+.launch-gate.launch-tight .launch-kicker { margin-bottom: .3rem; font-size: .6rem; }
+.launch-gate.launch-tight .launch-copy h1 { font-size: clamp(1.9rem, 6vh, 3.5rem); }
+.launch-gate.launch-tight .launch-intro { font-size: .78rem; line-height: 1.3; }
+.launch-gate.launch-tight .launch-form { margin-top: .5rem; }
+.launch-gate.launch-tight .launch-form-row input,
+.launch-gate.launch-tight .launch-form-row button { padding-block: .5rem; }
+.launch-gate.launch-tight .launch-form-note { margin-top: .2rem; font-size: .6rem; }
+.launch-gate.launch-tight .launch-trust { gap: .65rem; margin-top: .3rem; font-size: .6rem; }
+.launch-gate.launch-tight .launch-panel-copy { margin: .5rem 0 .3rem; }
+.launch-gate.launch-tight .launch-countdown { padding-block: .5rem; }
+.launch-gate.launch-tight .launch-progress { margin-block: .45rem; }
+.launch-gate.launch-tight .launch-panel-footer p { font-size: .62rem; line-height: 1.3; }
 .launch-copy { max-width: 760px; animation: launchReveal .8s ease both; }
 @keyframes launchReveal { from { opacity: 0; transform: translateY(18px); } }
 .launch-kicker { display: flex; align-items: center; gap: .7rem; margin-bottom: 1.5rem; color: var(--launch-gold); font-size: .74rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
@@ -185,8 +216,9 @@ body.launch-locked { overflow: hidden; }
   .launch-panel-copy { margin: .8rem 0 .5rem; }
   .launch-panel-copy h2 { font-size: 1.2rem; }
   .launch-countdown { padding: .65rem 0; }
-  .launch-progress,
-  .launch-panel-footer { display: none; }
+  .launch-progress { margin-block: .65rem; }
+  .launch-arrow { width: 30px; height: 30px; }
+  .launch-panel-footer p { font-size: .62rem; line-height: 1.3; }
   .launch-copy h1 { margin-bottom: .7rem; }
   .launch-intro { line-height: 1.5; }
   .launch-form { margin-top: .9rem; }
@@ -206,8 +238,8 @@ body.launch-locked { overflow: hidden; }
   .launch-form-row { display: block; padding: .45rem; }
   .launch-form-row input { width: 100%; padding: .55rem .7rem; }
   .launch-form-row button { width: 100%; padding: .55rem .8rem; }
-  .launch-form-note,
-  .launch-trust { display: none; }
+  .launch-form-note { margin-top: .2rem; font-size: .58rem; }
+  .launch-trust { gap: .5rem; margin-top: .3rem; font-size: .56rem; }
   .launch-panel { padding: .7rem .85rem; }
   .launch-panel-copy { margin: .5rem 0 .3rem; }
   .launch-panel-copy h2 { margin-top: .1rem; font-size: .9rem; }
@@ -219,14 +251,13 @@ body.launch-locked { overflow: hidden; }
 @media (max-height: 720px) {
   .launch-header { padding-block: .65rem; }
   .launch-main { padding-block: .5rem; }
-  .launch-kicker,
-  .launch-intro,
-  .launch-trust { display: none; }
+  .launch-kicker { margin-bottom: .3rem; font-size: .6rem; }
+  .launch-intro { font-size: .76rem; line-height: 1.3; }
+  .launch-trust { margin-top: .3rem; }
   .launch-copy h1 { margin-bottom: .45rem; font-size: clamp(1.9rem, 6.5vh, 3.8rem); }
   .launch-form { margin-top: .45rem; }
   .launch-panel-copy { margin: .45rem 0 .25rem; }
-  .launch-progress,
-  .launch-panel-footer { display: none; }
+  .launch-progress { margin-block: .45rem; }
 }
 @media (max-height: 560px) and (min-width: 700px) {
   .launch-main { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
