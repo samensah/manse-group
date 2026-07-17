@@ -225,28 +225,53 @@ body.launch-locked { overflow: hidden; }
   .launch-trust { margin-top: .7rem; }
 }
 @media (max-width: 600px) {
-  .launch-gate { padding-inline: 1.1rem; }
-  .launch-header { padding: .8rem 0; }
-  .launch-contact-link { font-size: 0; }
-  .launch-contact-link span { font-size: 1.1rem; }
-  .launch-main { gap: .65rem; padding: .65rem 0; }
-  .launch-kicker { margin-bottom: .55rem; font-size: .58rem; }
-  .launch-copy h1 { margin-bottom: .5rem; font-size: clamp(2rem, 9.5vw, 3rem); }
-  .launch-intro { font-size: .8rem; line-height: 1.4; }
-  .launch-form { margin-top: .6rem; }
-  .launch-form label { margin-bottom: .3rem; }
-  .launch-form-row { display: block; padding: .45rem; }
-  .launch-form-row input { width: 100%; padding: .55rem .7rem; }
-  .launch-form-row button { width: 100%; padding: .55rem .8rem; }
-  .launch-form-note { margin-top: .2rem; font-size: .58rem; }
-  .launch-trust { gap: .5rem; margin-top: .3rem; font-size: .56rem; }
-  .launch-panel { padding: .7rem .85rem; }
-  .launch-panel-copy { margin: .5rem 0 .3rem; }
-  .launch-panel-copy h2 { margin-top: .1rem; font-size: .9rem; }
-  .launch-countdown { padding: .5rem 0 0; border-bottom: 0; }
-  .launch-countdown strong { font-size: clamp(1.65rem, 10vw, 2.6rem); }
-  .launch-countdown span { margin-top: .25rem; }
-  .launch-countdown b { font-size: clamp(1.65rem, 10vw, 2.6rem); }
+  .launch-gate {
+    padding-right: max(1rem, env(safe-area-inset-right));
+    padding-left: max(1rem, env(safe-area-inset-left));
+  }
+  .launch-header {
+    min-height: 58px;
+    padding: max(.65rem, env(safe-area-inset-top)) 0 .65rem;
+  }
+  .launch-logo { gap: .6rem; }
+  .launch-logo-mark { width: 34px; height: 34px; font-size: .95rem; }
+  .launch-logo strong { font-size: .88rem; }
+  .launch-logo small { font-size: .48rem; }
+  .launch-contact-link { font-size: .72rem; }
+  .launch-contact-link span { margin-left: .2rem; }
+
+  .launch-main {
+    align-content: center;
+    gap: clamp(.75rem, 2.5vh, 1.25rem);
+    padding: .75rem 0 max(.75rem, env(safe-area-inset-bottom));
+  }
+  .launch-copy { width: 100%; }
+  .launch-kicker { margin-bottom: .65rem; font-size: .57rem; line-height: 1.35; letter-spacing: .1em; }
+  .launch-kicker span { width: 20px; }
+  .launch-copy h1 { margin-bottom: .65rem; font-size: clamp(2rem, 10vw, 2.8rem); line-height: 1.02; }
+  .launch-intro { font-size: .82rem; line-height: 1.45; }
+
+  .launch-form { margin-top: .8rem; }
+  .launch-form label { margin-bottom: .4rem; font-size: .7rem; }
+  .launch-form-row { padding: .3rem; }
+  .launch-form-row input { width: 100%; min-width: 0; padding: .68rem .7rem; font-size: .8rem; }
+  .launch-form-row button { flex: 0 0 auto; padding: .68rem .75rem; font-size: .72rem; white-space: nowrap; }
+  .launch-form-note { display: none; }
+  .launch-trust { display: none; }
+
+  .launch-panel { width: 100%; padding: .85rem 1rem; border-radius: 10px; }
+  .launch-panel::before { width: 120px; height: 120px; top: -75px; right: -50px; }
+  .launch-status { font-size: .56rem; }
+  .launch-edition { display: none; }
+  .launch-panel-copy { margin: .65rem 0 .45rem; }
+  .launch-panel-copy p { font-size: .56rem; }
+  .launch-panel-copy h2 { margin-top: .1rem; font-size: 1rem; }
+  .launch-countdown { padding: .65rem 0 .1rem; border-bottom: 0; }
+  .launch-countdown strong,
+  .launch-countdown b { font-size: clamp(1.65rem, 8.5vw, 2.25rem); }
+  .launch-countdown span { margin-top: .3rem; font-size: .5rem; }
+  .launch-progress,
+  .launch-panel-footer { display: none; }
 }
 @media (max-height: 720px) {
   .launch-header { padding-block: .65rem; }
@@ -259,7 +284,19 @@ body.launch-locked { overflow: hidden; }
   .launch-panel-copy { margin: .45rem 0 .25rem; }
   .launch-progress { margin-block: .45rem; }
 }
-@media (max-height: 560px) and (min-width: 700px) {
+@media (max-width: 340px) {
+  .launch-form-row { display: block; }
+  .launch-form-row button { width: 100%; }
+  .launch-intro { font-size: .76rem; }
+}
+@media (max-width: 600px) and (max-height: 620px) {
+  .launch-kicker,
+  .launch-intro { display: none; }
+  .launch-copy h1 { font-size: clamp(1.8rem, 8.5vw, 2.25rem); }
+  .launch-panel-copy { margin-block: .35rem; }
+  .launch-countdown { padding-top: .4rem; }
+}
+@media (max-height: 560px) and (min-width: 560px) {
   .launch-main { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
   .launch-panel { padding: .85rem; }
   .launch-countdown strong,

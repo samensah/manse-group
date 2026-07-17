@@ -143,6 +143,9 @@ fadeEls.forEach(el => observer.observe(el));
     launchMain.style.transformOrigin = '';
     gate.classList.remove('launch-compact', 'launch-tight');
 
+    // Phones use the dedicated responsive layout; never shrink the whole UI.
+    if (window.matchMedia('(max-width: 600px)').matches) return;
+
     if (launchMain.scrollHeight > launchMain.clientHeight + 1) {
       gate.classList.add('launch-compact');
     }
