@@ -141,10 +141,21 @@ fadeEls.forEach(el => observer.observe(el));
   function fitLaunchPage() {
     launchMain.style.transform = '';
     launchMain.style.transformOrigin = '';
-    gate.classList.remove('launch-compact', 'launch-tight');
+    gate.classList.remove('launch-compact', 'launch-tight', 'launch-mobile-tight');
 
-    // Phones use the dedicated responsive layout; never shrink the whole UI.
-    if (window.matchMedia('(max-width: 600px)').matches) return;
+    if (window.matchMedia('(max-width: 600px)').matches) {
+      if (launchMain.scrollHeight > launchMain.clientHeight + 1) {
+        gate.classList.add('launch-mobile-tight');
+      }
+
+      // Final safeguard for exceptionally short mobile browser viewports.
+      if (launchMain.scrollHeight > launchMain.clientHeight + 1) {
+        const mobileFitScale = Math.min(1, (launchMain.clientHeight - 2) / launchMain.scrollHeight);
+        launchMain.style.transform = `scale(${mobileFitScale})`;
+        launchMain.style.transformOrigin = 'center center';
+      }
+      return;
+    }
 
     if (launchMain.scrollHeight > launchMain.clientHeight + 1) {
       gate.classList.add('launch-compact');
