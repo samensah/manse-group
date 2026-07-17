@@ -35,19 +35,19 @@ body.launch-locked { overflow: hidden; }
   position: fixed;
   inset: 0;
   z-index: 10000;
-  min-height: 100dvh;
-  overflow-y: auto;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto minmax(0, 1fr);
   padding: 0 clamp(1.25rem, 4vw, 4.5rem);
   color: var(--launch-ink);
   background:
     radial-gradient(circle at 12% 82%, rgba(34, 78, 116, .48), transparent 32%),
     linear-gradient(135deg, #071426 0%, #0b203a 54%, #0d2947 100%);
   isolation: isolate;
-  transition: opacity .55s ease, visibility .55s ease;
 }
-.launch-gate.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 .launch-grid-pattern {
   position: absolute;
   inset: 0;
@@ -82,8 +82,7 @@ body.launch-locked { overflow: hidden; }
 }
 @keyframes launchDrift { to { transform: translate3d(28px, 18px, 0) scale(1.08); } }
 
-.launch-header,
-.launch-footer {
+.launch-header {
   width: min(1420px, 100%);
   margin-inline: auto;
   display: flex;
@@ -112,6 +111,7 @@ body.launch-locked { overflow: hidden; }
 
 .launch-main {
   width: min(1420px, 100%);
+  min-height: 0;
   margin: auto;
   padding: clamp(3rem, 7vh, 6.5rem) 0;
   display: grid;
@@ -164,8 +164,13 @@ body.launch-locked { overflow: hidden; }
 .launch-countdown div { text-align: center; }
 .launch-countdown strong { display: block; font-size: clamp(1.8rem, 4vw, 3.5rem); font-weight: 500; line-height: 1; letter-spacing: -.05em; font-variant-numeric: tabular-nums; }
 .launch-countdown span { display: block; margin-top: .7rem; color: rgba(255,255,255,.35); font-size: .58rem; letter-spacing: .12em; text-transform: uppercase; }
-.launch-countdown b { color: var(--launch-gold); font-size: 1.4rem; font-weight: 400; line-height: 1.2; animation: launchColon 1s steps(1) infinite; }
-@keyframes launchColon { 50% { opacity: .25; } }
+.launch-countdown b {
+  align-self: start;
+  color: var(--launch-gold);
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1;
+}
 .launch-progress { height: 3px; margin: 2rem 0; background: rgba(255,255,255,.1); }
 .launch-progress span { display: block; width: 68%; height: 100%; background: linear-gradient(90deg, #8c7232, var(--launch-gold)); position: relative; }
 .launch-progress span::after { content: ''; position: absolute; top: -3px; right: -3px; width: 9px; height: 9px; border-radius: 50%; background: var(--launch-gold); box-shadow: 0 0 12px var(--launch-gold); }
@@ -173,32 +178,64 @@ body.launch-locked { overflow: hidden; }
 .launch-panel-footer strong { color: rgba(255,255,255,.78); }
 .launch-arrow { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.16); border-radius: 50%; color: var(--launch-gold); }
 
-.launch-footer { padding: 1.35rem 0; border-top: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.35); font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; }
-.launch-footer button { border: 0; background: transparent; color: rgba(255,255,255,.55); font: inherit; font-size: .67rem; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; transition: color .2s ease; }
-.launch-footer button:hover { color: var(--launch-gold); }
-
 @media (max-width: 940px) {
-  .launch-main { grid-template-columns: 1fr; gap: 3rem; }
+  .launch-main { grid-template-columns: 1fr; gap: clamp(.8rem, 2vh, 1.5rem); padding: clamp(1rem, 3vh, 2rem) 0; }
   .launch-copy { max-width: 760px; }
-  .launch-panel { max-width: 680px; }
+  .launch-panel { width: 100%; max-width: 680px; padding: 1rem 1.25rem; }
+  .launch-panel-copy { margin: .8rem 0 .5rem; }
+  .launch-panel-copy h2 { font-size: 1.2rem; }
+  .launch-countdown { padding: .65rem 0; }
+  .launch-progress,
+  .launch-panel-footer { display: none; }
+  .launch-copy h1 { margin-bottom: .7rem; }
+  .launch-intro { line-height: 1.5; }
+  .launch-form { margin-top: .9rem; }
+  .launch-trust { margin-top: .7rem; }
 }
 @media (max-width: 600px) {
   .launch-gate { padding-inline: 1.1rem; }
-  .launch-header { padding: 1.15rem 0; }
+  .launch-header { padding: .8rem 0; }
   .launch-contact-link { font-size: 0; }
   .launch-contact-link span { font-size: 1.1rem; }
-  .launch-main { padding: 2.2rem 0; }
-  .launch-copy h1 { font-size: clamp(2.55rem, 12vw, 4rem); }
+  .launch-main { gap: .65rem; padding: .65rem 0; }
+  .launch-kicker { margin-bottom: .55rem; font-size: .58rem; }
+  .launch-copy h1 { margin-bottom: .5rem; font-size: clamp(2rem, 9.5vw, 3rem); }
+  .launch-intro { font-size: .8rem; line-height: 1.4; }
+  .launch-form { margin-top: .6rem; }
+  .launch-form label { margin-bottom: .3rem; }
   .launch-form-row { display: block; padding: .45rem; }
-  .launch-form-row input { width: 100%; }
-  .launch-form-row button { width: 100%; }
-  .launch-panel { padding: 1.25rem; }
+  .launch-form-row input { width: 100%; padding: .55rem .7rem; }
+  .launch-form-row button { width: 100%; padding: .55rem .8rem; }
+  .launch-form-note,
+  .launch-trust { display: none; }
+  .launch-panel { padding: .7rem .85rem; }
+  .launch-panel-copy { margin: .5rem 0 .3rem; }
+  .launch-panel-copy h2 { margin-top: .1rem; font-size: .9rem; }
+  .launch-countdown { padding: .5rem 0 0; border-bottom: 0; }
   .launch-countdown strong { font-size: clamp(1.65rem, 10vw, 2.6rem); }
-  .launch-countdown b { font-size: 1rem; }
-  .launch-footer span:first-child { display: none; }
+  .launch-countdown span { margin-top: .25rem; }
+  .launch-countdown b { font-size: clamp(1.65rem, 10vw, 2.6rem); }
+}
+@media (max-height: 720px) {
+  .launch-header { padding-block: .65rem; }
+  .launch-main { padding-block: .5rem; }
+  .launch-kicker,
+  .launch-intro,
+  .launch-trust { display: none; }
+  .launch-copy h1 { margin-bottom: .45rem; font-size: clamp(1.9rem, 6.5vh, 3.8rem); }
+  .launch-form { margin-top: .45rem; }
+  .launch-panel-copy { margin: .45rem 0 .25rem; }
+  .launch-progress,
+  .launch-panel-footer { display: none; }
+}
+@media (max-height: 560px) and (min-width: 700px) {
+  .launch-main { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .launch-panel { padding: .85rem; }
+  .launch-countdown strong,
+  .launch-countdown b { font-size: 1.55rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .launch-orb, .launch-status i, .launch-countdown b { animation: none; }
+  .launch-orb, .launch-status i { animation: none; }
   .launch-copy, .launch-panel { animation: none; }
 }
 

@@ -123,17 +123,11 @@ fadeEls.forEach(el => observer.observe(el));
         </aside>
       </main>
 
-      <footer class="launch-footer">
-        <span>London, United Kingdom</span>
-        <button type="button" id="launchPreview">Preview current website <span aria-hidden="true">↓</span></button>
-        <span>© 2026 MANSE Group</span>
-      </footer>
     </div>
   `);
 
   const gate = document.getElementById('launchGate');
 
-  const previewButton = document.getElementById('launchPreview');
   const countdown = document.getElementById('launchCountdown');
   const waitlistForm = document.getElementById('launchWaitlistForm');
   const formNote = document.getElementById('launchFormNote');
@@ -160,14 +154,6 @@ fadeEls.forEach(el => observer.observe(el));
 
   updateCountdown();
   const timer = window.setInterval(updateCountdown, 1000);
-
-  previewButton?.addEventListener('click', () => {
-    gate.classList.add('is-hidden');
-    document.body.classList.remove('launch-locked');
-    coveredPage.forEach(element => element.removeAttribute('inert'));
-    window.clearInterval(timer);
-    window.setTimeout(() => gate.setAttribute('hidden', ''), 600);
-  });
 
   waitlistForm?.addEventListener('submit', event => {
     event.preventDefault();
