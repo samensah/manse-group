@@ -23,9 +23,9 @@
   <style>
     /* ===== ARTICLE-SPECIFIC STYLES ===== */
     .article-hero {
-      background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%);
+      background: var(--light);
       padding: 7rem 0 4rem;
-      color: var(--white);
+      color: var(--text);
     }
     .article-hero-inner { max-width: 780px; margin: 0 auto; }
 
@@ -34,12 +34,12 @@
       align-items: center;
       gap: .5rem;
       font-size: .82rem;
-      color: rgba(255,255,255,.5);
+      color: var(--muted);
       margin-bottom: 1.5rem;
     }
-    .breadcrumb a { color: rgba(255,255,255,.5); transition: color var(--transition); }
-    .breadcrumb a:hover { color: var(--gold); }
-    .breadcrumb span { color: rgba(255,255,255,.25); }
+    .breadcrumb a { color: var(--muted); transition: color var(--transition); }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb span { color: var(--muted); }
 
     .article-hero-meta {
       display: flex;
@@ -48,9 +48,9 @@
       flex-wrap: wrap;
       margin-bottom: 1.25rem;
     }
-    .article-hero h1 { color: var(--white); margin-bottom: 1.25rem; font-size: clamp(1.6rem, 3.5vw, 2.5rem); }
+    .article-hero h1 { color: var(--text); margin-bottom: 1.25rem; font-size: clamp(1.6rem, 3.5vw, 2.5rem); }
     .article-hero .article-summary {
-      color: rgba(255,255,255,.7);
+      color: var(--muted);
       font-size: 1.1rem;
       line-height: 1.7;
       max-width: 680px;
@@ -74,9 +74,9 @@
       font-size: 1.2rem;
       flex-shrink: 0;
     }
-    .author-info .author-name { font-weight: 600; color: var(--white); font-size: .9rem; }
-    .author-info .author-role { font-size: .78rem; color: rgba(255,255,255,.5); }
-    .article-read-time { margin-left: auto; font-size: .78rem; color: rgba(255,255,255,.45); }
+    .author-info .author-name { font-weight: 600; color: var(--text); font-size: .9rem; }
+    .author-info .author-role { font-size: .78rem; color: var(--muted); }
+    .article-read-time { margin-left: auto; font-size: .78rem; color: var(--muted); }
 
     /* ===== ARTICLE BODY ===== */
     .article-body {
@@ -119,7 +119,7 @@
       text-decoration: underline;
       text-underline-offset: 3px;
     }
-    .article-content a:hover { color: var(--gold); }
+    .article-content a:hover { color: var(--accent); }
 
     /* callout box */
     .callout {
@@ -172,7 +172,7 @@
       color: var(--white);
     }
     .key-number .kn-val { font-size: 1.75rem; font-weight: 800; color: var(--gold); line-height: 1; }
-    .key-number .kn-label { font-size: .75rem; color: rgba(255,255,255,.6); margin-top: .35rem; }
+    .key-number .kn-label { font-size: .75rem; color: var(--on-dark); margin-top: .35rem; }
 
     /* tags at bottom */
     .article-tags { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
@@ -217,7 +217,7 @@
     }
     .toc-list a::before {
       content: '–';
-      color: var(--gold);
+      color: var(--gold-ink);
       flex-shrink: 0;
       margin-top: .05rem;
     }
@@ -229,8 +229,8 @@
       border: none;
       color: var(--white);
     }
-    .sidebar-cta h4 { color: rgba(255,255,255,.5); }
-    .sidebar-cta p { font-size: .87rem; color: rgba(255,255,255,.65); margin-bottom: 1rem; }
+    .sidebar-cta h4 { color: var(--white); }
+    .sidebar-cta p { font-size: .87rem; color: var(--on-dark); margin-bottom: 1rem; }
 
     /* related articles */
     .related-article {
@@ -315,13 +315,13 @@
         <span>›</span>
         <a href="../articles.html">Insights</a>
         <span>›</span>
-        <span style="color:rgba(255,255,255,.75)">Corporation Tax 2025</span>
+        <span style="color:var(--muted)">Corporation Tax 2025</span>
       </nav>
 
       <div class="article-hero-meta">
-        <span class="article-tag" style="background:rgba(201,168,76,.2);color:var(--gold-lt);">Tax &amp; HMRC</span>
-        <time datetime="2025-05-20" style="font-size:.82rem;color:rgba(255,255,255,.5);">20 May 2025</time>
-        <span style="font-size:.82rem;color:rgba(255,255,255,.5);">7 min read</span>
+        <span class="article-tag" style="background:rgba(201,168,76,.2);color:var(--gold-ink);">Tax &amp; HMRC</span>
+        <time datetime="2025-05-20" style="font-size:.82rem;color:var(--muted);">20 May 2025</time>
+        <span style="font-size:.82rem;color:var(--muted);">7 min read</span>
       </div>
 
       <h1>Corporation Tax Rate Changes: What Every Director Needs to Know in 2025</h1>
