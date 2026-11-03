@@ -307,7 +307,7 @@ function loadTawkTo() {
     /* navy circle */
     ctx.beginPath();
     ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
-    ctx.fillStyle = '#0B1F3A';
+    ctx.fillStyle = '#00338D';
     ctx.fill();
 
     /* white "M" in Inter */

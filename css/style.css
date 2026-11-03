@@ -2,18 +2,18 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --navy:    #243B45;
-  --navy-lt: #304C56;
-  --blue-end: #355862;
-  --accent:  #17635E;
+  --navy:    #00338D;
+  --navy-lt: #0046AD;
+  --blue-end: #005EB8;
+  --accent:  #00338D;
   --gold-ink: #795B20;
   --on-dark: #E3EBEE;
   --gold:    #C9A84C;
   --gold-lt: #E2C074;
   --slate:   #4A5568;
-  --light:   #F5F7F8;
+  --light:   #F5F7FB;
   --white:   #FFFFFF;
-  --border:  #D5DFE3;
+  --border:  #D6DFED;
   --text:    #202D35;
   --muted:   #52616B;
   --radius:  8px;
@@ -985,7 +985,7 @@ section { padding: 5rem 0; }
 .form-group textarea:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(23,99,94,.15);
+  box-shadow: 0 0 0 3px rgba(0,51,141,.15);
 }
 .form-group textarea { resize: vertical; min-height: 130px; }
 
@@ -1441,7 +1441,7 @@ footer {
 .calc-field input[type="number"]:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(23,99,94,.15);
+  box-shadow: 0 0 0 3px rgba(0,51,141,.15);
 }
 .calc-field input[type="range"] {
   width: 100%;
@@ -1588,7 +1588,7 @@ footer {
   background: var(--light);
   color: var(--text);
 }
-.hero::before { background: radial-gradient(ellipse at 85% 25%, rgba(23,99,94,.06), transparent 65%); }
+.hero::before { background: radial-gradient(ellipse at 85% 25%, rgba(0,51,141,.06), transparent 65%); }
 .hero h1,
 .cta-band h2 { color: var(--navy); }
 .hero h1 span { color: var(--accent); }
@@ -1600,8 +1600,8 @@ footer {
 .stat-label { color: var(--muted); }
 .hero-badge {
   color: var(--accent);
-  background: #E8F2F0;
-  border-color: #BDD6D1;
+  background: #EAF1FB;
+  border-color: #B8CCE9;
 }
 .hero-stats { border-color: var(--border); }
 .stat-num { color: var(--accent); }
@@ -1619,11 +1619,11 @@ footer {
 .hero .btn-primary,
 .cta-band .btn-primary { background: var(--accent); color: var(--white); }
 .hero .btn-primary:hover,
-.cta-band .btn-primary:hover { background: #124E49; }
+.cta-band .btn-primary:hover { background: #00256B; }
 .hero .btn-outline,
 .cta-band .btn-outline { color: var(--accent); border-color: var(--accent); }
 .hero .btn-outline:hover,
-.cta-band .btn-outline:hover { background: #E8F2F0; }
+.cta-band .btn-outline:hover { background: #EAF1FB; }
 :where(input, textarea)::placeholder { color: var(--muted); opacity: 1; }
 :where(a, button, input, select, textarea):focus-visible {
   outline: 3px solid var(--accent);
