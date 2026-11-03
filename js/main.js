@@ -58,158 +58,158 @@ const observer = new IntersectionObserver(entries => {
 
 fadeEls.forEach(el => observer.observe(el));
 
-/* ===== PRE-LAUNCH FRONT DOOR ===== */
-(function () {
-  document.body.insertAdjacentHTML('afterbegin', `
-    <div class="launch-gate" id="launchGate" data-launch-date="2026-09-01T09:00:00+01:00" role="dialog" aria-modal="true" aria-labelledby="launchTitle">
-      <div class="launch-orb launch-orb-one" aria-hidden="true"></div>
-      <div class="launch-orb launch-orb-two" aria-hidden="true"></div>
-      <div class="launch-grid-pattern" aria-hidden="true"></div>
+// /* ===== PRE-LAUNCH FRONT DOOR ===== */
+// (function () {
+//   document.body.insertAdjacentHTML('afterbegin', `
+//     <div class="launch-gate" id="launchGate" data-launch-date="2026-09-01T09:00:00+01:00" role="dialog" aria-modal="true" aria-labelledby="launchTitle">
+//       <div class="launch-orb launch-orb-one" aria-hidden="true"></div>
+//       <div class="launch-orb launch-orb-two" aria-hidden="true"></div>
+//       <div class="launch-grid-pattern" aria-hidden="true"></div>
 
-      <header class="launch-header">
-        <a href="index.html" class="launch-logo" aria-label="Manse Group home">
-          <span class="launch-logo-mark">M</span>
-          <span>
-            <strong>MANSE <em>Group</em></strong>
-            <small>Advisory &amp; Analytics</small>
-          </span>
-        </a>
-        <a class="launch-contact-link" href="mailto:manse.advisoryanalytics@gmail.com">Talk to us <span aria-hidden="true">↗</span></a>
-      </header>
+//       <header class="launch-header">
+//         <a href="index.html" class="launch-logo" aria-label="Manse Group home">
+//           <span class="launch-logo-mark">M</span>
+//           <span>
+//             <strong>MANSE <em>Group</em></strong>
+//             <small>Advisory &amp; Analytics</small>
+//           </span>
+//         </a>
+//         <a class="launch-contact-link" href="mailto:manse.advisoryanalytics@gmail.com">Talk to us <span aria-hidden="true">↗</span></a>
+//       </header>
 
-      <main class="launch-main">
-        <section class="launch-copy">
-          <div class="launch-kicker"><span></span> A smarter financial partner is taking shape</div>
-          <h1 id="launchTitle">Clarity for your finances.<br><span>Confidence for what’s next.</span></h1>
-          <p class="launch-intro">MANSE combines intelligent financial technology with real human expertise—giving UK businesses sharper insight, simpler compliance and more time to grow.</p>
+//       <main class="launch-main">
+//         <section class="launch-copy">
+//           <div class="launch-kicker"><span></span> A smarter financial partner is taking shape</div>
+//           <h1 id="launchTitle">Clarity for your finances.<br><span>Confidence for what’s next.</span></h1>
+//           <p class="launch-intro">MANSE combines intelligent financial technology with real human expertise—giving UK businesses sharper insight, simpler compliance and more time to grow.</p>
 
-          <form class="launch-form" id="launchWaitlistForm" novalidate>
-            <label for="launchEmail">Be first to know when we launch</label>
-            <div class="launch-form-row">
-              <input type="email" id="launchEmail" name="email" placeholder="Enter your work email" autocomplete="email" required>
-              <button type="submit">Join the waitlist <span aria-hidden="true">→</span></button>
-            </div>
-            <p class="launch-form-note" id="launchFormNote">No noise. Just our launch announcement and useful financial insight.</p>
-          </form>
+//           <form class="launch-form" id="launchWaitlistForm" novalidate>
+//             <label for="launchEmail">Be first to know when we launch</label>
+//             <div class="launch-form-row">
+//               <input type="email" id="launchEmail" name="email" placeholder="Enter your work email" autocomplete="email" required>
+//               <button type="submit">Join the waitlist <span aria-hidden="true">→</span></button>
+//             </div>
+//             <p class="launch-form-note" id="launchFormNote">No noise. Just our launch announcement and useful financial insight.</p>
+//           </form>
 
-          <div class="launch-trust">
-            <span>AI-powered</span><span>Human-led</span><span>Built for UK businesses</span>
-          </div>
-        </section>
+//           <div class="launch-trust">
+//             <span>AI-powered</span><span>Human-led</span><span>Built for UK businesses</span>
+//           </div>
+//         </section>
 
-        <aside class="launch-panel" aria-label="Launch countdown">
-          <div class="launch-panel-top">
-            <span class="launch-status"><i></i> Building in progress</span>
-            <span class="launch-edition">01 / 26</span>
-          </div>
-          <div class="launch-panel-copy">
-            <p>We go live</p>
-            <h2>01 September 2026</h2>
-          </div>
-          <div class="launch-countdown" id="launchCountdown" aria-live="polite">
-            <div><strong data-unit="days">00</strong><span>Days</span></div>
-            <b>:</b>
-            <div><strong data-unit="hours">00</strong><span>Hours</span></div>
-            <b>:</b>
-            <div><strong data-unit="minutes">00</strong><span>Mins</span></div>
-            <b>:</b>
-            <div><strong data-unit="seconds">00</strong><span>Secs</span></div>
-          </div>
-          <div class="launch-progress" aria-hidden="true"><span></span></div>
-          <div class="launch-panel-footer">
-            <p><strong>Early access</strong><br>Waitlist members get first priority.</p>
-            <span class="launch-arrow" aria-hidden="true">↗</span>
-          </div>
-        </aside>
-      </main>
+//         <aside class="launch-panel" aria-label="Launch countdown">
+//           <div class="launch-panel-top">
+//             <span class="launch-status"><i></i> Building in progress</span>
+//             <span class="launch-edition">01 / 26</span>
+//           </div>
+//           <div class="launch-panel-copy">
+//             <p>We go live</p>
+//             <h2>01 September 2026</h2>
+//           </div>
+//           <div class="launch-countdown" id="launchCountdown" aria-live="polite">
+//             <div><strong data-unit="days">00</strong><span>Days</span></div>
+//             <b>:</b>
+//             <div><strong data-unit="hours">00</strong><span>Hours</span></div>
+//             <b>:</b>
+//             <div><strong data-unit="minutes">00</strong><span>Mins</span></div>
+//             <b>:</b>
+//             <div><strong data-unit="seconds">00</strong><span>Secs</span></div>
+//           </div>
+//           <div class="launch-progress" aria-hidden="true"><span></span></div>
+//           <div class="launch-panel-footer">
+//             <p><strong>Early access</strong><br>Waitlist members get first priority.</p>
+//             <span class="launch-arrow" aria-hidden="true">↗</span>
+//           </div>
+//         </aside>
+//       </main>
 
-    </div>
-  `);
+//     </div>
+//   `);
 
-  const gate = document.getElementById('launchGate');
+//   const gate = document.getElementById('launchGate');
 
-  const launchMain = gate.querySelector('.launch-main');
-  const countdown = document.getElementById('launchCountdown');
-  const waitlistForm = document.getElementById('launchWaitlistForm');
-  const formNote = document.getElementById('launchFormNote');
-  const launchAt = new Date(gate.dataset.launchDate).getTime();
-  const coveredPage = [...document.body.children].filter(element => element !== gate && element.tagName !== 'SCRIPT');
+//   const launchMain = gate.querySelector('.launch-main');
+//   const countdown = document.getElementById('launchCountdown');
+//   const waitlistForm = document.getElementById('launchWaitlistForm');
+//   const formNote = document.getElementById('launchFormNote');
+//   const launchAt = new Date(gate.dataset.launchDate).getTime();
+//   const coveredPage = [...document.body.children].filter(element => element !== gate && element.tagName !== 'SCRIPT');
 
-  document.body.classList.add('launch-locked');
-  coveredPage.forEach(element => element.setAttribute('inert', ''));
+//   document.body.classList.add('launch-locked');
+//   coveredPage.forEach(element => element.setAttribute('inert', ''));
 
-  function fitLaunchPage() {
-    launchMain.style.transform = '';
-    launchMain.style.transformOrigin = '';
-    gate.classList.remove('launch-compact', 'launch-tight', 'launch-mobile-tight');
+//   function fitLaunchPage() {
+//     launchMain.style.transform = '';
+//     launchMain.style.transformOrigin = '';
+//     gate.classList.remove('launch-compact', 'launch-tight', 'launch-mobile-tight');
 
-    if (window.matchMedia('(max-width: 600px)').matches) {
-      if (launchMain.scrollHeight > launchMain.clientHeight + 1) {
-        gate.classList.add('launch-mobile-tight');
-      }
+//     if (window.matchMedia('(max-width: 600px)').matches) {
+//       if (launchMain.scrollHeight > launchMain.clientHeight + 1) {
+//         gate.classList.add('launch-mobile-tight');
+//       }
 
-      // Final safeguard for exceptionally short mobile browser viewports.
-      if (launchMain.scrollHeight > launchMain.clientHeight + 1) {
-        const mobileFitScale = Math.min(1, (launchMain.clientHeight - 2) / launchMain.scrollHeight);
-        launchMain.style.transform = `scale(${mobileFitScale})`;
-        launchMain.style.transformOrigin = 'center center';
-      }
-      return;
-    }
+//       // Final safeguard for exceptionally short mobile browser viewports.
+//       if (launchMain.scrollHeight > launchMain.clientHeight + 1) {
+//         const mobileFitScale = Math.min(1, (launchMain.clientHeight - 2) / launchMain.scrollHeight);
+//         launchMain.style.transform = `scale(${mobileFitScale})`;
+//         launchMain.style.transformOrigin = 'center center';
+//       }
+//       return;
+//     }
 
-    if (launchMain.scrollHeight > launchMain.clientHeight + 1) {
-      gate.classList.add('launch-compact');
-    }
+//     if (launchMain.scrollHeight > launchMain.clientHeight + 1) {
+//       gate.classList.add('launch-compact');
+//     }
 
-    if (launchMain.scrollHeight > launchMain.clientHeight + 1) {
-      gate.classList.add('launch-tight');
-    }
+//     if (launchMain.scrollHeight > launchMain.clientHeight + 1) {
+//       gate.classList.add('launch-tight');
+//     }
 
-    if (launchMain.scrollHeight > launchMain.clientHeight + 1) {
-      const fitScale = Math.min(1, (launchMain.clientHeight - 2) / launchMain.scrollHeight);
-      launchMain.style.transform = `scale(${fitScale})`;
-      launchMain.style.transformOrigin = 'center center';
-    }
-  }
+//     if (launchMain.scrollHeight > launchMain.clientHeight + 1) {
+//       const fitScale = Math.min(1, (launchMain.clientHeight - 2) / launchMain.scrollHeight);
+//       launchMain.style.transform = `scale(${fitScale})`;
+//       launchMain.style.transformOrigin = 'center center';
+//     }
+//   }
 
-  fitLaunchPage();
-  window.addEventListener('resize', fitLaunchPage);
-  document.fonts?.ready.then(fitLaunchPage);
+//   fitLaunchPage();
+//   window.addEventListener('resize', fitLaunchPage);
+//   document.fonts?.ready.then(fitLaunchPage);
 
-  function updateCountdown() {
-    const remaining = Math.max(0, launchAt - Date.now());
-    const units = {
-      days: Math.floor(remaining / 86400000),
-      hours: Math.floor((remaining / 3600000) % 24),
-      minutes: Math.floor((remaining / 60000) % 60),
-      seconds: Math.floor((remaining / 1000) % 60)
-    };
+//   function updateCountdown() {
+//     const remaining = Math.max(0, launchAt - Date.now());
+//     const units = {
+//       days: Math.floor(remaining / 86400000),
+//       hours: Math.floor((remaining / 3600000) % 24),
+//       minutes: Math.floor((remaining / 60000) % 60),
+//       seconds: Math.floor((remaining / 1000) % 60)
+//     };
 
-    Object.entries(units).forEach(([unit, value]) => {
-      const output = countdown?.querySelector(`[data-unit="${unit}"]`);
-      if (output) output.textContent = String(value).padStart(2, '0');
-    });
-  }
+//     Object.entries(units).forEach(([unit, value]) => {
+//       const output = countdown?.querySelector(`[data-unit="${unit}"]`);
+//       if (output) output.textContent = String(value).padStart(2, '0');
+//     });
+//   }
 
-  updateCountdown();
-  const timer = window.setInterval(updateCountdown, 1000);
+//   updateCountdown();
+//   const timer = window.setInterval(updateCountdown, 1000);
 
-  waitlistForm?.addEventListener('submit', event => {
-    event.preventDefault();
-    const emailInput = document.getElementById('launchEmail');
+//   waitlistForm?.addEventListener('submit', event => {
+//     event.preventDefault();
+//     const emailInput = document.getElementById('launchEmail');
 
-    if (!emailInput?.checkValidity()) {
-      emailInput?.reportValidity();
-      return;
-    }
+//     if (!emailInput?.checkValidity()) {
+//       emailInput?.reportValidity();
+//       return;
+//     }
 
-    const subject = 'MANSE pre-launch waitlist request';
-    const body = `Please add ${emailInput.value} to the MANSE launch waitlist.`;
-    formNote.textContent = 'Your email draft is ready—send it to confirm your place.';
-    formNote.classList.add('is-success');
-    window.location.href = `mailto:manse.advisoryanalytics@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  });
-})();
+//     const subject = 'MANSE pre-launch waitlist request';
+//     const body = `Please add ${emailInput.value} to the MANSE launch waitlist.`;
+//     formNote.textContent = 'Your email draft is ready—send it to confirm your place.';
+//     formNote.classList.add('is-success');
+//     window.location.href = `mailto:manse.advisoryanalytics@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+//   });
+// })();
 
 /* ===== CONTACT FORM ===== */
 const form = document.getElementById('contactForm');
