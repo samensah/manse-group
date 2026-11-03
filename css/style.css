@@ -438,6 +438,7 @@ h3 { font-size: 1.25rem; }
 .nav-links a.active { color: var(--gold); }
 
 .nav-cta { margin-left: 1rem; }
+.nav-links .nav-cta .btn-primary { color: #000000; }
 
 .hamburger {
   display: none;
